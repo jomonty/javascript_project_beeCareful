@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "server:dev": "nodemon server.js",
-    "seeds": "mongosh < ./db/seeds.js"
+    "seeds": "node db/seed.js"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +18,7 @@
     "mongodb": "^4.13.0"
   },
   "devDependencies": {
+    "mongoose": "^6.8.4",
     "nodemon": "^2.0.20"
   }
 }
