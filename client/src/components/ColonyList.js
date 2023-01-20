@@ -1,10 +1,14 @@
 import ColonyCard from "./ColonyCard"
 
-const ColonyList = () => {
+const ColonyList = (colonies, deleteColony) => {
+    
+    const colonyList = colonies.map((colony) => {
+        return <ColonyCard colonyName={colonyName} queen={queen} queenDOB={queenDOB} hiveHealth={hiveHealth} key={colony._id} removeColony={removeColony} />
+    })
+    
     return (
         <>
-            <h1>Colony List</h1>
-            <ColonyCard />
+            {colonyList}
         </>
     )
 }
