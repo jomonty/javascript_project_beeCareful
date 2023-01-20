@@ -8,9 +8,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-MongoClient.connect('mongodb://127.0.0.1:27017', { useUnifiedTopology: true })
+const uri = "mongodb://127.0.0.1:27017";
+const dbName = "beehive_management";
+
+MongoClient.connect(uri, { useUnifiedTopology: true })
   .then((client) => {
-    const db = client.db('beehive_management');
+    const db = client.db(dbName);
     const apiariesRouter = createApiariesRouter(db)
     app.use('/api/apiaries', apiariesRouter)
   })

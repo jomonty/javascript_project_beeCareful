@@ -4,7 +4,7 @@ const createColoniesRouter = require('./create_colonies_router');
 const { getApiaries, createApiary, updateApiary, deleteApiary } = require('../db/repo/apiaries_queries');
 
 const createApiariesRouter = function (db) {
-    
+
   const router = express.Router({ mergeParams: true });
 
   // Apiaries - GET - index
