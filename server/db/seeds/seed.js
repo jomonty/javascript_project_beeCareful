@@ -1,9 +1,9 @@
 const { MongoClient } = require('mongodb');
 const { apiariesSeed, coloniesSeed, inspectionsSeed } = require('./data');
 
-// const uri = 'mongodb://127.0.0.1:27017'
+const uri = 'mongodb://127.0.0.1:27017'
 
-const client = new MongoClient('mongodb://127.0.0.1:27017');
+const client = new MongoClient(uri);
 
 async function seed() {
   try {

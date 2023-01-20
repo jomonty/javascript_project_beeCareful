@@ -79,9 +79,7 @@ async function deleteApiary (db, id) {
   const apiariesCollection = db.collection('apiaries');
   const coloniesCollection = db.collection('colonies');
   const inspectionsCollection = db.collection('inspections');
-  const apiaries = await apiariesCollection.find({ _id: id}).toArray();
   const colonies = await coloniesCollection.find().toArray();
-  const inspections = await inspectionsCollection.find().toArray();
 
   // Cascade delete to child documents
   const relatedColonyIds = colonies
