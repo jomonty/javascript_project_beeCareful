@@ -1,11 +1,11 @@
 const { MongoClient } = require('mongodb');
 const { apiariesSeed, coloniesSeed, inspectionsSeed } = require('./data');
 
-const uri = 'mongodb://127.0.0.1:27017'
+// const uri = 'mongodb://127.0.0.1:27017'
 
-const client = new MongoClient(uri);
+const client = new MongoClient('mongodb://127.0.0.1:27017');
 
-async function run() {
+async function seed() {
   try {
     // Connect to the db
     await client.connect();
@@ -28,7 +28,7 @@ async function run() {
       const selectedApiary = insertedApiaries.filter(apiary => {
         return apiary.name === colony.apiaryName;
       })
-      colony.apiary_id = selectedApiary[0]._id;
+      colony.parent_id = selectedApiary[0]._id;
       delete colony.apiaryName;
       return colony;
     })
@@ -46,14 +46,14 @@ async function run() {
       const selectedColony = insertedColonies.filter(colony => {
         return colony.name === inspection.colonyName;
       })
-      inspection.colony_id = selectedColony[0]._id;
+      inspection.parent_id = selectedColony[0]._id;
       delete inspection.colonyName;
       return inspection;
     })
     // Insert inspections and fetch the collection
     await inspections.insertMany(inspectionsWithIDs);
-    const insertedInspections = await inspections.find().toArray();
 
+    // const insertedInspections = await inspections.find().toArray();
     // console.log(insertedInspections)
 
   } finally {
@@ -61,4 +61,4 @@ async function run() {
   }
 }
 
-run().catch(console.dir);
+seed().catch(console.dir);

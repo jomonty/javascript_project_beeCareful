@@ -20,24 +20,24 @@ const apiariesSeed = [
 
 const coloniesSeed = [
   {
-      apiary_id: null,
-      name: "Colony 1",
-      queenName: "Brenda",
-      queenBirthMonth: "2022-01-01",
-      apiaryName: "Andrew's Apiary"
+    parent_id: null,
+    name: "Colony 1",
+    queenName: "Brenda",
+    queenBirthMonth: "2022-01-01",
+    apiaryName: "Andrew's Apiary"
   },
   {
-      apiary_id: null,
-      name: "Colony 2",
-      queenName: "Liz",
-      queenBirthMonth: "2022-06-01",
-      apiaryName: "Andrew's Apiary"
+    parent_id: null,
+    name: "Colony 2",
+    queenName: "Liz",
+    queenBirthMonth: "2022-06-01",
+    apiaryName: "Andrew's Apiary"
   }
 ];
 
 const inspectionsSeed = [
   {
-    colony_id: null,
+    parent_id: null,
     inspectionDate: "2021-05-12",
     queenSpotted: false,
     broodspotted: "no",
@@ -47,7 +47,7 @@ const inspectionsSeed = [
     colonyName: "Colony 1"
   },
   {
-    colony_id: null,
+    parent_id: null,
     inspectionDate: "2021-12-12",
     queenSpotted: true,
     broodspotted: "no",
@@ -57,7 +57,7 @@ const inspectionsSeed = [
     colonyName: "Colony 1"
   },
   {
-    colony_id: null,
+    parent_id: null,
     inspectionDate: "2022-05-12",
     queenSpotted: true,
     broodspotted: "no",
@@ -67,7 +67,7 @@ const inspectionsSeed = [
     colonyName: "Colony 1"
   },
   {
-    colony_id: null,
+    parent_id: null,
     inspectionDate: "2021-05-12",
     queenSpotted: false,
     broodspotted: "no",
@@ -77,7 +77,7 @@ const inspectionsSeed = [
     colonyName: "Colony 2"
   },
   {
-    colony_id: null,
+    parent_id: null,
     inspectionDate: "2021-12-12",
     queenSpotted: true,
     broodspotted: "no",
@@ -87,7 +87,7 @@ const inspectionsSeed = [
     colonyName: "Colony 2"
   },
   {
-    colony_id: null,
+    parent_id: null,
     inspectionDate: "2022-05-12",
     queenSpotted: true,
     broodspotted: "no",
