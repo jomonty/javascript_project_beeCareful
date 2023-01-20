@@ -50,8 +50,7 @@ async function createApiary (db, apiary) {
   insertedApiary.colonies = [];
   
   return insertedApiary;
-
-}
+};
 
 async function updateApiary (db, id, apiary) {
 
@@ -72,7 +71,7 @@ async function updateApiary (db, id, apiary) {
   // Fetch updated apiary and return
   const updatedApiary = await apiariesCollection.findOne({ _id: id });
   return updatedApiary;
-}
+};
 
 async function deleteApiary (db, id) {
 
@@ -92,6 +91,11 @@ async function deleteApiary (db, id) {
   inspectionsCollection.deleteMany({parent_id: {$in: relatedColonyIds}})
   coloniesCollection.deleteMany({parent_id: id})
   apiariesCollection.deleteMany({ _id: id })
-}
+};
 
-module.exports = { getApiaries, createApiary, updateApiary, deleteApiary };
+module.exports = {
+  getApiaries,
+  createApiary,
+  updateApiary,
+  deleteApiary
+};
