@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { MongoClient } = require('mongodb');
-const createRouter = require('./helpers/create_router');
+const createApiariesRouter = require('./routes/create_apiaries_router');
 
 const app = express();
 
@@ -10,8 +10,9 @@ app.use(cors());
 
 MongoClient.connect('mongodb://127.0.0.1:27017', { useUnifiedTopology: true })
   .then((client) => {
-    const router = createRouter(db)
-    app.use('/api', router)
+    const db = client.db('beehive_management');
+    const apiariesRouter = createApiariesRouter(db)
+    app.use('/api/apiaries', apiariesRouter)
   })
   .catch(error => {
     console.error(error);
