@@ -24,7 +24,12 @@ async function getColonies (db, parent_id=null, id=null) {
     colony.inspections = relatedInspections;
     return colony;        
   })
-  return allColonies;
+
+  if ( id !== null && allColonies.length === 1) {
+    return allColonies[0];
+  } else {
+    return allColonies;
+  }
 };
   
 async function createColony (db, parent_id, colony) {
@@ -37,9 +42,9 @@ async function createColony (db, parent_id, colony) {
   // Insert new colony
   const insertResult = await coloniesCollection.insertOne(colonyToInsert);
   // Find inserted colony
-  const insertedColony = await coloniesCollection.findOne(
-    { _id: insertResult.insertedId}
-  )
+  const insertedId = insertResult.insertedId;
+  const insertedColony = await getColonies(db, parent_id, insertedId);
+
   // Assign empty array as property to new apiary - for client
   insertedColony.inspections = [];
   
@@ -53,19 +58,19 @@ async function updateColony (db, parent_id, id, colony) {
 
   // Modify apiary for insertion
   const colonyToUpdate = colony;
-  console.log(colonyToUpdate);
   colonyToUpdate.parent_id = parent_id;
-  delete colony._id;
-  delete colony.inspections;
+  delete colonyToUpdate._id;
+  delete colonyToUpdate.inspections;
 
   // Update apiary in collection
-  coloniesCollection.updateOne(
+  await coloniesCollection.updateOne(
     { _id: id },
     { $set: colonyToUpdate }
   )
 
   // Fetch updated apiary and return
-  const updatedColony = await coloniesCollection.findOne({ _id: id });
+  const updatedColony = await getColonies(db, parent_id, id);
+
   return updatedColony;
 };
   
@@ -80,7 +85,7 @@ async function deleteColony (db, id) {
   const relatedInspectionsIds = inspections
     .map(colony => colony._id)
 
-  inspectionsCollection.deleteMany({ parent_id: {$in: relatedInspectionsIds}})
+  inspectionsCollection.deleteMany({ _id: {$in: relatedInspectionsIds}})
   coloniesCollection.deleteMany({ _id: id})
 };
 

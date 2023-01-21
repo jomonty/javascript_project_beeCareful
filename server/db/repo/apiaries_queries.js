@@ -32,7 +32,11 @@ async function getApiaries (db, id=null) {
     return apiary;
   })
 
-  return allApiaries;
+  if (id !== null && allApiaries.length === 1) {
+    return allApiaries[0];
+  } else {
+    return allApiaries;
+  }
 };
 
 
@@ -43,9 +47,9 @@ async function createApiary (db, apiary) {
   // Insert new apiary
   const insertResult = await apiariesCollection.insertOne(apiary);
   // Find inserted apiary
-  const insertedApiary = await apiariesCollection.findOne(
-    { _id: insertResult.insertedId}
-  )
+  const insertedId = insertResult.insertedId;
+  const insertedApiary = await getApiaries(db, insertedId);
+
   // Assign empty array as property to new apiary - for client
   insertedApiary.colonies = [];
   
@@ -59,17 +63,18 @@ async function updateApiary (db, id, apiary) {
 
   // Modify apiary for insertion
   const apiaryToUpdate = apiary;
-  delete apiary._id;
-  delete apiary.colonies;
+  delete apiaryToUpdate._id;
+  delete apiaryToUpdate.colonies;
+  console.log(apiaryToUpdate);
 
   // Update apiary in collection
-  apiariesCollection.updateOne(
+  await apiariesCollection.updateOne(
     { _id: id },
     { $set: apiaryToUpdate }
   )
 
   // Fetch updated apiary and return
-  const updatedApiary = await apiariesCollection.findOne({ _id: id });
+  const updatedApiary = await getApiaries(db, id)
   return updatedApiary;
 };
 
