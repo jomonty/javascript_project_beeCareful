@@ -1,5 +1,3 @@
-
-
 const WeatherElement = ({ weather }) => {
 
   
@@ -10,7 +8,8 @@ const WeatherElement = ({ weather }) => {
             <li>
                 Date: {weather.datetime}<br/>
                 Temperature: {weather.temp}<br/>
-                Wind Speed: {weather.windspeed} mph
+                Wind Speed: {weather.windspeed} mph<br/>
+                <img src={`/${weather.icon}.png`} />
             </li>
         </ul>
     )
