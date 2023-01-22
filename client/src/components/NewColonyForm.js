@@ -17,12 +17,14 @@ const NewColonyForm = ({ addColony }) => {
     setQueenBirthMonth(event.target.value)
     }
 
+    // Set a reset function to reset the useState
     const resetForm = () => {
         setName('')
         setQueenName('')
         setQueenBirthMonth('')
     }
 
+    // Handle data when submit the form
     const handleSubmit =(event) => {
         event.preventDefault();
         const payload = {
