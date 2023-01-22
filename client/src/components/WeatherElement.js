@@ -2,7 +2,7 @@ const WeatherElement = ({ weather }) => {
 
   
 
-    console.log(weather);
+
     return (
         <ul>
             <li>
