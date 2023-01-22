@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, Fragment} from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ColonyList from "../components/ColonyList";
 import WeatherGrid from '../components/WeatherGrid';
@@ -14,16 +14,20 @@ const ApiaryContainer = () => {
 	const [weather,setWeather] = useState([])
 
 	useEffect(() => {
-		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g644dq?unitGroup=us&key=Q9GKPJ25W25C3H7UHVBDCKSHW&contentType=json")
+		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g64%204bu?unitGroup=uk&key=Q9GKPJ25W25C3H7UHVBDCKSHW&contentType=json")
 			.then(res => res.json())
 			.then(data => {
                 setWeather(data)
                 fetch('http://localhost:9000/api/apiaries')
                 .then(res2 => res2.json())
-                .then(data2 => setApiaryData(data2))})
-            }
+                .then(data2 => {
+                setApiaryData(data2)
+				const newData = data.days.slice(0,5)
+				setWeather(newData)})
+    })
+			
 		
-		, [])
+            }, [])
     
 
     const addColony = (payload) => {
@@ -37,14 +41,17 @@ const ApiaryContainer = () => {
 
     return (
         <Router>
-            <NavBar />
-            <Routes>
-				{apiaryData.length > 0 && <Route path="/" element={ <ColonyList apiaryData={apiaryData} /> } />}
-                {apiaryData.length > 0 && <Route path="/inspections" element={ <InspectionList /> } />}
-            </Routes>
-            {apiaryData.length > 0 && <NewColonyForm addColony={addColony} />}
-            {apiaryData.length > 0 && <WeatherGrid weather={weather}/>}
-
+            {apiaryData.length > 0 && weather.length > 0 ? (
+                <Fragment>
+                    <NavBar /> 
+                    <Routes>
+                        <Route path="/" element={ <ColonyList apiaryData={apiaryData} /> } />
+                        <Route path="/inspections" element={ <InspectionList /> } />
+                    </Routes>
+                    <NewColonyForm addColony={addColony} />
+                    <WeatherGrid weather={weather}/>
+                </Fragment>
+            ):null}
         </Router>
     )
 }

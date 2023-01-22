@@ -1,8 +1,17 @@
+const WeatherElement = ({ weather }) => {
+
+  
 
 
-const WeatherElement = () => {
     return (
-        <h1>Weather element</h1>
+        <ul>
+            <li>
+                Date: {weather.datetime}<br/>
+                Temperature: {weather.temp}<br/>
+                Wind Speed: {weather.windspeed} mph<br/>
+                <img src={`/${weather.icon}.png`} />
+            </li>
+        </ul>
     )
 }
 
