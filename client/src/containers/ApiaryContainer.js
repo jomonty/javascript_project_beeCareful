@@ -115,9 +115,12 @@ const ApiaryContainer = () => {
 	const [weather,setWeather] = useState([])
 
 	useEffect(() => {
-		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g644dq?unitGroup=us&key=Q9GKPJ25W25C3H7UHVBDCKSHW&contentType=json")
+		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g64%204bu?unitGroup=uk&key=Q9GKPJ25W25C3H7UHVBDCKSHW&contentType=json")
 			.then(res => res.json())
-			.then(data => setWeather(data))
+			.then(data => {
+				const newData = data.days.slice(0,5)
+				setWeather(newData)
+			})
 		
 		}, [])
     

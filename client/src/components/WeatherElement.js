@@ -1,8 +1,18 @@
 
 
-const WeatherElement = () => {
+const WeatherElement = ({ weather }) => {
+
+  
+
+    console.log(weather);
     return (
-        <h1>Weather element</h1>
+        <ul>
+            <li>
+                Date: {weather.datetime}<br/>
+                Temperature: {weather.temp}<br/>
+                Wind Speed: {weather.windspeed} mph
+            </li>
+        </ul>
     )
 }
 
