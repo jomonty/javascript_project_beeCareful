@@ -1,10 +1,21 @@
 import ColonyCard from "./ColonyCard"
 
-const ColonyList = () => {
+const ColonyList = ({apiaryData}) => {
+
+
+
+    const colonyNodes = apiaryData[0].colonies.map((colony,index) => {
+        return <ColonyCard colony={colony} key={index}/>
+    })
+    
+
+
     return (
         <>
-            <h1>Colony List</h1>
-            <ColonyCard />
+            <ul>
+                {colonyNodes}
+            </ul>
+       
         </>
     )
 }
