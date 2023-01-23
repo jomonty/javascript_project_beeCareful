@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './NewInspectionForm.css'
 
 const NewInspectionForm = ({ addInspection, apiary_id, colony_id }) => {
 

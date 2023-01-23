@@ -1,4 +1,5 @@
 import WeatherElement from "./WeatherElement";
+import './WeatherGrid.css'
 
 const WeatherGrid = ({ weather }) => {
 

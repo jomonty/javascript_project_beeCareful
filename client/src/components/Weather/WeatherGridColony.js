@@ -1,4 +1,4 @@
-import Datetime from 'react-datetime'
+import './WeatherGridColony.css'
 
 const WeatherGridColony = ({weather}) => {
 

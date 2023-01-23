@@ -1,6 +1,7 @@
 import ColonyCard from "./ColonyCard"
 import WeatherGrid from '../Weather/WeatherGrid'
 import NewColonyForm from "./NewColonyForm"
+import './ColonyList.css'
 
 const ColonyList = ({apiaryData, weather, addColony, updateColony, deleteColony}) => {
 

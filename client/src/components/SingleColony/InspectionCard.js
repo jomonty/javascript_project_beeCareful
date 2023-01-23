@@ -1,5 +1,6 @@
 import {  Link } from 'react-router-dom'
 import BeeServices from '../../services/BeeService';
+import './InspectionCard.css'
 
 
 const InspectionCard = ({inspection, deleteInspection}) => {

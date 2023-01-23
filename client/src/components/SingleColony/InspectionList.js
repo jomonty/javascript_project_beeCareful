@@ -1,5 +1,6 @@
 import InspectionCard from "./InspectionCard"
 import NewInspectionForm from "./NewInspectionForm";
+import './InspectionList.css'
 
 
 const InspectionList = ({apiaryData, selectedColony, weather, addInspection, updateInspection, deleteInspection}) => {

@@ -1,3 +1,5 @@
+import './WeatherElement.css'
+
 const WeatherElement = ({ weather }) => {
 
   

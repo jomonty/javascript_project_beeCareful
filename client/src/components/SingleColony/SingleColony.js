@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import InspectionList from './InspectionList';
 import WeatherGridColony from '../Weather/WeatherGridColony';
+import './SingleColony.css'
 
 const SingleColony = ({apiaryData, weather, addInspection, updateInspection, deleteInspection}) => {
 
