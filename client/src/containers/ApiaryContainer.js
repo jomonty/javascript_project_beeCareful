@@ -11,25 +11,24 @@ const ApiaryContainer = () => {
 
     const [apiaryData,setApiaryData] = useState([]);
 
+    const [selectedApiary, setSelectedApiary] = useState(0);
+
 	const [weather,setWeather] = useState([])
 
     
 	useEffect(() => {
 		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g64%204bu?unitGroup=uk&key=Q9GKPJ25W25C3H7UHVBDCKSHW&contentType=json")
 			.then(res => res.json())
-			.then(data => {
-                setWeather(data)
-                fetch('http://localhost:9000/api/apiaries')
-                .then(res2 => res2.json())
-                .then(data2 => {
-                setApiaryData(data2)
-				const newData = data.days.slice(0,5)
-				setWeather(newData)})
-    })
-			
-		
-            }, [])
-    
+			.then(weatherData => {
+                setWeather(weatherData)
+                BeeServices.getApiaries()
+                .then(apiaryData => {
+                    setApiaryData(apiaryData)
+				    setWeather(weatherData.days.slice(0,5))})
+            })
+	}, [])
+
+
 
     const addColony = (payload) => {
         
