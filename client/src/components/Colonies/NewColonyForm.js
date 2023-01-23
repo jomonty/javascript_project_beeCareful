@@ -41,16 +41,17 @@ const NewColonyForm = ({ addColony }) => {
 
 
     return (
-        <form>
-            <input type="text" value={name} placeholder="name" name="name" onChange={handleNameChange}/>
-            <input type="text" value={queenName} placeholder="Queen's name" name="queenName" onChange={handleQueenNameChange}/>
-
-            <input type="date" value={queenBirthMonth} placeholder="Queen's DOB" name="queenBirthMonth" onChange={handleQueenBirthMonthChange}/>
-
-
-            <button type="submit" onClick={handleSubmit}>Add Colony</button>
+        <form className="form-wrapper">
+            <div className="input-wrapper">
+                <input type="text" value={name} placeholder="Name" name="name" onChange={handleNameChange} className="input"/>
+                <input type="text" value={queenName} placeholder="Queen's name" name="queenName" onChange={handleQueenNameChange}/>
+                <input type="date" value={queenBirthMonth} placeholder="Queen's DOB" name="queenBirthMonth" onChange={handleQueenBirthMonthChange}/>
+            </div>
+            <button type="submit" onClick={handleSubmit} className="btn-add-colony">Add Colony</button>
         </form>
     )
 }
 
 export default NewColonyForm;
+
+

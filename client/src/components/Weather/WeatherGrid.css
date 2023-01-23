@@ -1,0 +1,4 @@
+.weather-forecast-wrapper {
+    display: flex;
+    gap: 2rem;
+}

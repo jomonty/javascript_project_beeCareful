@@ -8,6 +8,8 @@ import InspectionList from "../components/SingleColony/InspectionList"
 import BeeServices from '../services/BeeService';
 import SingleColony from '../components/SingleColony/SingleColony';
 
+import './ApiaryContainer.css'
+
 const ApiaryContainer = () => {
 
     const [apiaryData,setApiaryData] = useState([]);

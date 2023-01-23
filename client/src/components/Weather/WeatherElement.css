@@ -1,0 +1,16 @@
+#weather-forecast-tile {
+list-style-type: none;
+padding-left: 3rem;
+padding-top: 2rem;
+width: 13rem;
+height: 13rem;
+border-radius: 44% 56% 50% 50% / 30% 11% 89% 70%;
+background: linear-gradient(315deg, #ffff00, #d9dd00);
+box-shadow:  5px 5px 10px #8f9107,
+             -5px -5px 10px #ffff0d; 
+}
+
+
+#weather-forecast-tile:hover {
+    box-shadow: 7px 5px 56px -14px #C3D900;
+}

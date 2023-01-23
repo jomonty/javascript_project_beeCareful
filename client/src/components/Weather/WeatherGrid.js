@@ -7,9 +7,9 @@ const WeatherGrid = ({ weather }) => {
     const weatherNodes = weather.map((weather,index) => <WeatherElement key={index} weather={weather} />)
     
     return (
-        <>
+        <ul  className="weather-forecast-wrapper">
             {weatherNodes}
-        </>
+        </ul>
     )
 }
 
