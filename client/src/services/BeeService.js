@@ -26,8 +26,7 @@ const BeeServices = {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
+        .then(res => res.json());
 },
 // POST Inspection
     addInspection (apiaries_id, colony_id, inspection_id, inspection) {
@@ -73,7 +72,7 @@ const BeeServices = {
   },
 // DELETE Inspection
   deleteInspection(apiaries_id, colony_id, inspection_id){
-      return fetch(baseURL + apiaries_id + "/colonies/" + colony_id + "inspections" + inspection_id,{
+      return fetch(baseURL + apiaries_id + "/colonies/" + colony_id + "/inspections/" + inspection_id,{
           method:'DELETE'
       })
   }

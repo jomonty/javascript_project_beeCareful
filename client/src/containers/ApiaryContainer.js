@@ -18,7 +18,7 @@ const ApiaryContainer = () => {
 
     
 	useEffect(() => {
-		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g64%204bu?unitGroup=uk&key=Q9GKPJ25W25C3H7UHVBDCKSHW&contentType=json")
+		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g64%204bu?unitGroup=uk&key=Q86C2HV4D2FX4MKNCXF235DBE&contentType=json")
 			.then(res => res.json())
 			.then(weatherData => {
                 setWeather(weatherData.days.slice(0,5))})
@@ -32,19 +32,27 @@ const ApiaryContainer = () => {
     }, [])
 
     const addColony = (payload) => {
-        
-        const temp = [...apiaryData]
-        temp[0].colonies.push(payload)
-        console.log(payload)
-        setApiaryData(temp)
-        BeeServices.addColonies(temp[0]._id,payload)
+        BeeServices.addColonies(apiaryData[selectedApiary]._id,payload)
+        .then(res => {
+            const temp = [...apiaryData];
+            temp[selectedApiary].colonies.push(res);
+            setApiaryData(temp);
+        })
     }
 
     const updateColony = () => {
 
     }
-    const deleteColony = () => {
-
+    const deleteColony = (colony) => {
+        BeeServices.deleteColonies(apiaryData[selectedApiary]._id, colony._id)
+        .then(res => {
+            if (res.status === 200) {
+                const temp = [...apiaryData];
+                const index = temp[selectedApiary].colonies.indexOf(colony);
+                temp[selectedApiary].colonies.splice(index, 1);
+                setApiaryData(temp);
+            }
+        })
     }
 
 	const addInspection = (payload) => {

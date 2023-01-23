@@ -4,26 +4,22 @@ import NewColonyForm from "./NewColonyForm"
 
 const ColonyList = ({apiaryData, weather, addColony, updateColony, deleteColony}) => {
 
-
-    
-
     const colonyNodes = apiaryData.colonies.map((colony,index) => {
         return <ColonyCard colony={colony} key={index} deleteColony={deleteColony}/>
     })
     
-
-
     return (
-        <>
+        <div>
             <ul>
                 {colonyNodes}
             </ul>
+
             <NewColonyForm addColony={addColony}/>
+
             <WeatherGrid weather={weather}/>
-            
 
-        </>
+        </div>
     )
-}
+};
 
-export default ColonyList
+export default ColonyList;
