@@ -3,40 +3,41 @@ import SingleColony from "../SingleColony/SingleColony"
 import BeeServices from '../../services/BeeService'
 
 
-const ColonyCard = ({colony,index, setSelectedColony}) => {
+const ColonyCard = ({colony, deleteColony}) => {
 
-    // const findTheColony = async() =>{
+    const inspections = colony.inspections;
 
-    //     // const data = await BeeServices.getApiaries()
-
-    //     const findColony = data.map(element => {
-    //         return (element['colonies'].find(colonyElement => colonyElement['name'] === colony.name))
-    //     });
-
-    //     return findColony[0]
-    // }
+    const latestInspectionDate = colony.inspections.map(inspection => {
+        return new Date(inspection.inspectionDate);
+    })
+    .reduce( function (a,b) {
+        return a > b ? a : b;
+    })
 
 
-    
-    
-    // const handleClick = async() => {
-    //     const theColony = await findTheColony()
-    //     BeeServices.deleteColonies(theColony.parent_id, theColony._id)
-    //     window.location.reload(false)
-    // }
+    const latestInspection = colony.inspections.filter(inspection => {
+        const inspectionDate = new Date(inspection.inspectionDate);
+        return inspectionDate.getTime() === latestInspectionDate.getTime();
+    })
 
-    const handleSelect = () => {
-        setSelectedColony(colony._id)
+    console.log(latestInspection)
+    console.log(latestInspection.inspectionDate)
+
+    const handleClick = () => {
+        deleteColony(colony._id)
     }
 
     return (
         
             <li>
                 
-                <Link to={`/colony?id=${colony._id}`}>Colony Name: {colony.name} </Link>
-                <br/>
-                Queen Name: {colony.queenName}<br/>
-                {/* <button onClick={handleClick}>Remove Colony</button> */}
+                <h3>Colony Name: {colony.name}</h3>
+                <p><Link to={`/colony?id=${colony._id}`}>Detail</Link></p>
+                {/* <Link to={`/colony?id=${colony._id}`}>Colony Name: {colony.name} </Link> */}
+                <p>Queen Name: {colony.queenName}</p>
+                <p>Queen Birth Month: {colony.queenBirthMonth}</p>
+                <p>Latest Inspection Date: {latestInspection[0].inspectionDate}</p>
+                <button onClick={handleClick}>Remove Colony</button>
             </li>
         
     )
