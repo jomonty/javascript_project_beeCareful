@@ -1,6 +1,7 @@
 import {useState, useEffect, Fragment} from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ColonyList from '../components/Colonies/ColonyList';
+import EditColony from '../components/EditColony';
 
 
 import NavBar from '../components/NavBar';
@@ -15,6 +16,8 @@ const ApiaryContainer = () => {
     const [selectedApiary, setSelectedApiary] = useState(0);
 
 	const [weather,setWeather] = useState([])
+
+    const [colonyData,setColonyData] = useState()
 
     
 	useEffect(() => {
@@ -40,9 +43,24 @@ const ApiaryContainer = () => {
         })
     }
 
-    const updateColony = () => {
+    const editColony = (colony) =>{
+        setColonyData(colony)
 
     }
+
+    const updateColony = (payload) => {
+        const elementToChange = ['name', 'queenName', "queenBirthMonth"]
+        const object = {}
+        elementToChange.forEach(element => {
+            object[element] = payload[element]
+        })
+        console.log(object)
+        const newColony = Object.assign(colonyData, object)
+        BeeServices.updateColonies(apiaryData[selectedApiary]._id, colonyData._id, newColony)
+        
+        
+    }
+    
     const deleteColony = (colony) => {
         BeeServices.deleteColonies(apiaryData[selectedApiary]._id, colony._id)
         .then(res => {
@@ -110,6 +128,7 @@ const ApiaryContainer = () => {
                                             addColony={addColony}
                                             updateColony={updateColony}
                                             deleteColony={deleteColony}
+                                            editColony={editColony}
                                         />
                                     }
                         />
@@ -125,6 +144,7 @@ const ApiaryContainer = () => {
                                     } 
                         />
                         <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData}/> } />
+                        <Route path="/colony/edit" element={ <EditColony colonyData={colonyData} updateColony={updateColony}/> } />
 
                     </Routes>
                 </Fragment>

@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './ColonyCard.css'
 
-const ColonyCard = ({colony, deleteColony}) => {
+const ColonyCard = ({colony, deleteColony, editColony}) => {
+
+    const Navigate = useNavigate()
 
     const hasInspections = colony.inspections.length > 0;
 
@@ -20,9 +22,14 @@ const ColonyCard = ({colony, deleteColony}) => {
         return inspectionDate.getTime() === latestInspectionDate.getTime();
     });
 
-    const handleClick = () => {
+    const handleRemoveClick = () => {
         deleteColony(colony);
     };
+
+    const handleEditClick = () => {
+        editColony(colony);
+        Navigate('/colony/edit')
+    }
 
 
     return (
@@ -42,7 +49,8 @@ const ColonyCard = ({colony, deleteColony}) => {
                     </>
                 }
                 
-                <button onClick={handleClick}>Remove Colony</button>
+                <button onClick={handleRemoveClick}>Remove Colony</button>
+                <button onClick={handleEditClick}>Edit Colony</button>
             </div>
     )
 };

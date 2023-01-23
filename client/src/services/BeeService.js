@@ -49,7 +49,7 @@ const BeeServices = {
     },
 // PUT Colonies
     updateColonies (apiaries_id, colony_id, colony){
-    return fetch(baseURL + apiaries_id + "colonies" + colony_id,{
+    return fetch(baseURL + apiaries_id + "/colonies/" + colony_id,{
         method: 'PUT',
         body: JSON.stringify(colony),
         headers: {
