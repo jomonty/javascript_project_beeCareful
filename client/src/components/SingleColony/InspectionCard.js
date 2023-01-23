@@ -3,13 +3,13 @@ import BeeServices from '../../services/BeeService';
 import './InspectionCard.css'
 
 
-const InspectionCard = ({inspection, deleteInspection, getInspection}) => {
+const InspectionCard = ({inspection, deleteInspection, editInspection}) => {
 
     const Navigate = useNavigate()
 
     const handleEditClick = () =>{
 
-        getInspection(inspection)
+        editInspection(inspection)
         Navigate("/inspection/edit")
 
     }

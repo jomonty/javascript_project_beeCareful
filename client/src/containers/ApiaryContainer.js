@@ -103,7 +103,7 @@ const ApiaryContainer = () => {
         // BeeServices.deleteInspection(temp[0]._id,payload)
     }
 
-    const getInspection = (Inspection) => {
+    const editInspection = (Inspection) => {
         setInspection(Inspection)
     }
 
@@ -154,12 +154,11 @@ const ApiaryContainer = () => {
                                             apiaryData={apiaryData[selectedApiary]}
                                             weather={weather}
                                             addInspection={addInspection}
-                                            updateInspection={updateInspection}
                                             deleteInspection={deleteInspection}
                                         /> 
                                     } 
                         />
-                        <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} getInspection={getInspection}/> } />
+                        <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} editInspection={editInspection}/> } />
                         <Route path="/colony/edit" element={ <EditColony colonyData={colonyData} updateColony={updateColony}/> } />
                         <Route path="/inspection/edit" element={ <EditInspection inspection={inspection} updateInspection={updateInspection}/>} />
                     </Routes>
