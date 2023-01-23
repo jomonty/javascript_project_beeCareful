@@ -69,7 +69,7 @@ const NewInspectionForm = ({ addInspection, apiary_id, colony_id }) => {
             <label>Brood spotted?</label><select value={broodSpotted} placeholder="Brood Spotted?" name="broodSpotted" onChange={handleBroodSpotted}>
                 <option value="normal">Normal</option>
                 <option value="compact">Compact</option>
-                <option valie="spotty">Spotty</option>
+                <option value="spotty">Spotty</option>
                 <option value="No">No</option>
             </select>
             <input type="text" value={honey} placeholder="Honey [kg]" name="honey" onChange={handleHoney}/>
