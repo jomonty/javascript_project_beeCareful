@@ -71,7 +71,7 @@ const EditInspection = ({inspection, updateInspection, selectedColony}) =>{
             <label>Brood spotted?</label><select value={broodSpotted} placeholder={inspection.broodSpotted} name="broodSpotted" onChange={handleBroodSpotted}>
                 <option value="normal">Normal</option>
                 <option value="compact">Compact</option>
-                <option valie="spotty">Spotty</option>
+                <option value="spotty">Spotty</option>
                 <option value="No">No</option>
             </select>
             <input type="text" value={honey} placeholder={inspection.honeyStores_kg} name="honey" onChange={handleHoney}/>
