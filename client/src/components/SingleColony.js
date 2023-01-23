@@ -1,9 +1,14 @@
+import ColonyList from "./ColonyList";
 
 
-const SingleColony = () => {
+const SingleColony = ( colony, weather ) => {
     return (
         <>
-            <h1>Single Colony</h1>
+            <h1>{colony.name}</h1>
+            <p>Queen name: {colony.queenName}</p>
+            <p>Queen DOB: {colony.queenDOB}</p>
+            <p>Queen age: </p>
+            
         </>
     )
 }

@@ -5,6 +5,7 @@ import WeatherGrid from '../components/WeatherGrid';
 import NavBar from '../components/NavBar';
 import InspectionList from "../components/InspectionList"
 import NewColonyForm from "../components/NewColonyForm"
+import SingleColony from '../components/SingleColony';
 import BeeServices from '../services/BeeService';
 
 const ApiaryContainer = () => {

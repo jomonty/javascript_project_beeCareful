@@ -19,6 +19,7 @@ const ColonyCard = ({colony,index}) => {
         window.location.reload(false)
     }
     return (
+        <>
         <ul>
             <li>
                 Colony Name: {colony.name}<br/>
@@ -26,6 +27,8 @@ const ColonyCard = ({colony,index}) => {
                 <button onClick={handleClick}>Remove Colony</button>
             </li>
         </ul>
+        <SingleColony colony={colony}/>
+        </>
     )
 }
 

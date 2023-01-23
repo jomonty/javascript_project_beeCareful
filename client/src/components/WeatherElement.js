@@ -1,9 +1,12 @@
+import SingleColony from "./SingleColony";
+
 const WeatherElement = ({ weather }) => {
 
   
 
 
     return (
+        <>
         <ul>
             <li>
                 Date: {weather.datetime}<br/>
@@ -12,6 +15,8 @@ const WeatherElement = ({ weather }) => {
                 <img src={`/${weather.icon}.png`} />
             </li>
         </ul>
+        <SingleColony weather={weather} />
+        </>
     )
 }
 
