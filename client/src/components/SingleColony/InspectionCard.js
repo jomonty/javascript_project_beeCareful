@@ -9,7 +9,7 @@ const InspectionCard = ({inspection, deleteInspection, getInspection}) => {
 
     const handleEditClick = () =>{
 
-        getInspection(inspection)
+        // getInspection(inspection)
         Navigate("/inspection/edit")
 
     }

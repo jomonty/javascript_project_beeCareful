@@ -2,6 +2,7 @@ import {useState, useEffect, Fragment} from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ColonyList from '../components/Colonies/ColonyList';
 import EditColony from '../components/EditColony';
+import EditInspection from '../components/EditInspection';
 
 
 import NavBar from '../components/NavBar';
@@ -151,7 +152,7 @@ const ApiaryContainer = () => {
                         />
                         <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} getInspection={getInspection}/> } />
                         <Route path="/colony/edit" element={ <EditColony colonyData={colonyData} updateColony={updateColony}/> } />
-                        <Route path="/inspection/edit" element={ }
+                        <Route path="/inspection/edit" element={ <EditInspection />} />
                     </Routes>
                 </Fragment>
             ):null}

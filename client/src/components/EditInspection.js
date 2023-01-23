@@ -5,3 +5,5 @@ const EditInspection = () =>{
         </h1>
     )
 }
+
+export default EditInspection
