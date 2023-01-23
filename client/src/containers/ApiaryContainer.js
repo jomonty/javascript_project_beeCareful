@@ -6,6 +6,7 @@ import NavBar from '../components/NavBar';
 import InspectionList from "../components/InspectionList"
 import NewColonyForm from "../components/NewColonyForm"
 import BeeServices from '../services/BeeService';
+import SingleColony from '../components/SingleColony';
 
 const ApiaryContainer = () => {
 
@@ -20,15 +21,15 @@ const ApiaryContainer = () => {
 		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g64%204bu?unitGroup=uk&key=Q9GKPJ25W25C3H7UHVBDCKSHW&contentType=json")
 			.then(res => res.json())
 			.then(weatherData => {
-                setWeather(weatherData)
-                BeeServices.getApiaries()
-                .then(apiaryData => {
-                    setApiaryData(apiaryData)
-				    setWeather(weatherData.days.slice(0,5))})
-            })
-	}, [])
+                setWeather(weatherData.days.slice(0,5))})
+            }, [])
 
-
+    useEffect(() => {
+        BeeServices.getApiaries()
+        .then(apiaryDataRaw => {
+            setApiaryData(apiaryDataRaw);
+        })
+    }, [])
 
     const addColony = (payload) => {
         
@@ -56,11 +57,36 @@ const ApiaryContainer = () => {
                 <Fragment>
                     <NavBar /> 
                     <Routes>
-                        <Route path="/" element={ <ColonyList apiaryData={apiaryData} /> } />
-                        <Route path="/inspections" element={ <InspectionList apiaryData={apiaryData} addInspection={addInspection}/> } />
+
+                        <Route 
+                            path="/" 
+                            // element={ <ColonyList 
+                            //                 apiaryData={apiaryData[selectedApiary]} 
+                            //                 addColony={addColony}
+                            //                 weather={weather}
+                            //                 /> 
+                            //         } 
+                        />
+                        <Route
+                            path="/colonies"
+                            element={ <ColonyList 
+                                            apiaryData={apiaryData[selectedApiary]} 
+                                            addColony={addColony}
+                                            weather={weather}
+                                        />
+                                    }
+                        />
+                        <Route 
+                            path="/colony" 
+                            element={ <SingleColony 
+                                            apiaryData={apiaryData[selectedApiary]}
+                                            // selectedColony={selectedColony}
+                                        /> 
+                                    } 
+                        />
+                        <Route path="/inspections" element={ <InspectionList /> } />
+
                     </Routes>
-                    <NewColonyForm addColony={addColony} />
-                    <WeatherGrid weather={weather}/>
                 </Fragment>
             ):null}
         </Router>
