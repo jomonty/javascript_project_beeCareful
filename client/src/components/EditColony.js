@@ -35,7 +35,6 @@ const EditColony = ({ colonyData, updateColony}) => {
         }
 
         updateColony(payload)
-
         Navigate('/colonies')
         resetForm()
     }

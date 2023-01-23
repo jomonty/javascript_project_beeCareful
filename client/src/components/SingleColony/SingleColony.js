@@ -3,7 +3,7 @@ import InspectionList from './InspectionList';
 import WeatherGridColony from '../Weather/WeatherGridColony';
 import './SingleColony.css'
 
-const SingleColony = ({apiaryData, weather, addInspection, updateInspection, deleteInspection}) => {
+const SingleColony = ({apiaryData, weather, addInspection, updateInspection, deleteInspection, editInspection}) => {
 
     const location = useLocation();
     const selectedColony = new URLSearchParams(location.search).get('id');
@@ -28,6 +28,7 @@ const SingleColony = ({apiaryData, weather, addInspection, updateInspection, del
                 addInspection={addInspection}
                 updateInspection={updateInspection}
                 deleteInspection={deleteInspection}
+                editInspection={editInspection}
             />
             <h3>Weather Forecast</h3>
             <WeatherGridColony weather={weather} />

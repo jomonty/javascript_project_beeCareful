@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-const EditInspection = ({inspection, updateInspection}) =>{
+const EditInspection = ({inspection, updateInspection, selectedColony}) =>{
+
+    const Navigate = useNavigate()
 
     const [date,setDate] = useState("")
     const [queenSpotted,setQueenSpotted] = useState("")
@@ -52,9 +55,9 @@ const EditInspection = ({inspection, updateInspection}) =>{
             hiveHealth: hiveHealth,
             comments: comments
         }
+        console.log(payload.broodSpotted)
 
-        updateInspection(payload)
-
+        updateInspection(payload, selectedColony)
         resetForm();
     }
 
@@ -74,7 +77,7 @@ const EditInspection = ({inspection, updateInspection}) =>{
             <input type="text" value={honey} placeholder={inspection.honeyStores_kg} name="honey" onChange={handleHoney}/>
             <input type="text" value={hiveHealth} placeholder={inspection.hiveHealth} name="hiveHealth" onChange={handleHiveHealth}/>
             <input type="text" value={comments} placeholder={inspection.comments} name="comments" onChange={handleComment}/>
-            <button type="submit" onClick={handleSubmit}>Add Inspection</button>
+            <button type="submit" onClick={handleSubmit}>Edit Inspection</button>
         </form>
     )
 }

@@ -103,18 +103,19 @@ const ApiaryContainer = () => {
         // BeeServices.deleteInspection(temp[0]._id,payload)
     }
 
-    const editInspection = (Inspection) => {
+    const editInspection = (Inspection, selectedColony) => {
         setInspection(Inspection)
+        setColonyData(selectedColony)
     }
 
-    const updateInspection = (payload) => {
+    const updateInspection = (payload, colonyData) => {
         const elementToChange = ['inspectionDate', 'queenSpotted', "broodspotted", "honeyStores_kg", "hiveHealth", "comments"]
         const object = {}
         elementToChange.forEach(element => {
             object[element] = payload[element]
         })
-        console.log(object)
-        const newInspection = Object.assign(colonyData, object)
+        const newInspection = Object.assign(inspection, object)
+        console.log(newInspection)
         BeeServices.updateInspection(apiaryData[selectedApiary]._id, colonyData._id, newInspection)
         
         
@@ -155,12 +156,13 @@ const ApiaryContainer = () => {
                                             weather={weather}
                                             addInspection={addInspection}
                                             deleteInspection={deleteInspection}
+                                            editInspection={editInspection}
                                         /> 
                                     } 
                         />
                         <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} editInspection={editInspection}/> } />
                         <Route path="/colony/edit" element={ <EditColony colonyData={colonyData} updateColony={updateColony}/> } />
-                        <Route path="/inspection/edit" element={ <EditInspection inspection={inspection} updateInspection={updateInspection}/>} />
+                        <Route path="/inspection/edit" element={ <EditInspection inspection={inspection} updateInspection={updateInspection} selectedColony={colonyData}/>} />
                     </Routes>
                 </Fragment>
             ):null}

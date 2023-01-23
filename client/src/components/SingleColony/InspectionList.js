@@ -10,7 +10,7 @@ const InspectionList = ({apiaryData, selectedColony, weather, addInspection, upd
     })[0];
 
     const inspectionNodes = colony.inspections.map((inspection, index) => {
-        return <InspectionCard key={index} inspection={inspection} deleteInspection={deleteInspection} editInspection={editInspection}/>
+        return <InspectionCard key={index} inspection={inspection} deleteInspection={deleteInspection} editInspection={editInspection} selectedColony={selectedColony}/>
     })
 
     return (
