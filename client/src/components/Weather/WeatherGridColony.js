@@ -1,28 +1,40 @@
 import './WeatherGridColony.css'
 
-const WeatherGridColony = ({weather}) => {
+const WeatherGridColony = ({ weather }) => {
 
     function getDayOfWeek(date) {
-        const dayOfWeek = new Date(date).getDay();    
-        return isNaN(dayOfWeek) ? null : 
-          ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];}
+        const dayOfWeek = new Date(date).getDay();
+        return isNaN(dayOfWeek) ? null :
+            ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
+    }
 
-          const newSth = getDayOfWeek(weather[0].datetime)
 
 
-    const weatherColonyNodes = weather.map((weather,index) => {
+
+    const weatherColonyNodes = weather.map((weather, index) => {
         return <ul key={index}>
-            <li><b>{getDayOfWeek(weather.datetime)}</b> <br/>{weather.temp >= 5 ? `Temperature OK for opening hive. Temperature: ${weather.temp}` : `Too cold to open hive. Temperature: ${weather.temp}`} <br/>
-            {weather.windspeed >= 5 ? `Too windy. Windspeed: ${weather.windspeed}` :  `Calm. Windspeed: ${weather.windspeed}`  }
+            <li><b>{getDayOfWeek(weather.datetime)}</b>
+                <br />{weather.temp >= 5 ?
+                    <div>Temperature OK for opening hive. ({weather.temp} &#8451;)</div> :
+                    <div>Too cold to open hive. ({weather.temp} &#8451;)</div>}
+
+                {weather.windspeed >= 5 ?
+                    <div>Too windy. (Wind: {weather.windspeed} mph)</div> :
+                    <div>Calm. (Wind: {weather.windspeed} mph)</div>}
+                
+                <img src={`/${weather.icon}.png`} className="weather-icon" />
+
             </li>
         </ul>
-    } )
+    })
 
     return (
         <>
-        {weatherColonyNodes}
+            {weatherColonyNodes}
         </>
     )
 }
 
 export default WeatherGridColony;
+
+

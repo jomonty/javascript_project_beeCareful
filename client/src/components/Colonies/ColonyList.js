@@ -12,7 +12,7 @@ const ColonyList = ({apiaryData, weather, addColony, updateColony, deleteColony}
     
     return (
         <div>
-            <ul>
+            <ul className="colony-cards-wrapper">
                 {colonyNodes}
             </ul>
 
