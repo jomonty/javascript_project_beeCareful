@@ -1,3 +1,4 @@
+
 import InspectionCard from './InspectionCard';
 
 const InspectionList = ({apiaryData, selectedColony}) => {
@@ -10,12 +11,14 @@ const InspectionList = ({apiaryData, selectedColony}) => {
 
     const inspectionNodes = colony.inspections.map((inspection, index) => {
         return <InspectionCard key={index} inspection={inspection} />
+
     })
 
     return (
         <>
             <h1>Inspection List</h1>
             {inspectionNodes}
+
         </>
     )
 }

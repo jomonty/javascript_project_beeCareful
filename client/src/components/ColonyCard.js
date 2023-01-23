@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import SingleColony from "./SingleColony"
 import BeeServices from '../services/BeeService'
 
+
 const ColonyCard = ({colony,index, setSelectedColony}) => {
 
     // const findTheColony = async() =>{
@@ -14,6 +15,8 @@ const ColonyCard = ({colony,index, setSelectedColony}) => {
 
     //     return findColony[0]
     // }
+=======
+
     
     
     // const handleClick = async() => {
@@ -27,7 +30,7 @@ const ColonyCard = ({colony,index, setSelectedColony}) => {
     }
 
     return (
-        <ul>
+        
             <li>
                 
                 <Link to={`/colony?id=${colony._id}`}>Colony Name: {colony.name} </Link>
@@ -36,7 +39,7 @@ const ColonyCard = ({colony,index, setSelectedColony}) => {
                 Queen Name: {colony.queenName}<br/>
                 {/* <button onClick={handleClick}>Remove Colony</button> */}
             </li>
-        </ul>
+        
     )
 }
 
