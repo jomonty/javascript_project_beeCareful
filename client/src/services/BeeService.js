@@ -67,13 +67,13 @@ const BeeServices = {
   },
 // DELETE Colonies
   deleteColonies (apiaries_id, colony_id){
-      return fetch(baseURL + apiaries_id + "colonies" + colony_id, {
+      return fetch(baseURL + apiaries_id + "/colonies/" + colony_id, {
           method: 'DELETE'
       })
   },
 // DELETE Inspection
   deleteInspection(apiaries_id, colony_id, inspection_id){
-      return fetch(baseURL + apiaries_id + "colonies" + colony_id + "inspections" + inspection_id,{
+      return fetch(baseURL + apiaries_id + "/colonies/" + colony_id + "inspections" + inspection_id,{
           method:'DELETE'
       })
   }
