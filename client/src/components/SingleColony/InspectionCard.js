@@ -1,9 +1,18 @@
-import {  Link } from 'react-router-dom'
+import {  Link, useNavigate } from 'react-router-dom'
 import BeeServices from '../../services/BeeService';
 import './InspectionCard.css'
 
 
 const InspectionCard = ({inspection, deleteInspection}) => {
+
+    const Navigate = useNavigate()
+
+    const handleEditClick = () =>{
+        Navigate("/inspection/edit")
+
+    }
+
+
     return (
         <>
         
@@ -12,6 +21,7 @@ const InspectionCard = ({inspection, deleteInspection}) => {
             Brood Spotted? {inspection.broodSpotted} <br/>
             Queen Spotted? {inspection.queenSpotted ? "yes" : "no"} <br/>
             Honey stores kg {inspection.honeyStores_kg} <br />
+            <button onClick={handleEditClick}>Edit Inspection</button>
 
         </li>
         </>
