@@ -5,10 +5,15 @@ import BeeServices from '../../services/BeeService';
 const InspectionCard = ({inspection, deleteInspection}) => {
     return (
         <>
-            <h1>Inspection Card</h1>
-            <p>{inspection.inspectionDate}</p>
-        </>
+        
+        <li>
+            <b>Inspection Date: {inspection.inspectionDate} </b><br/>
+            Brood Spotted? {inspection.broodspotted} <br/>
+            Queen Spotted? {inspection.queenSpotted ? "yes" : "no"} <br/>
+            Honey stores kg {inspection.honeyStores_kg} <br />
 
+        </li>
+        </>
     )
 }
 
