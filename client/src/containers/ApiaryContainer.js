@@ -107,8 +107,17 @@ const ApiaryContainer = () => {
         setInspection(Inspection)
     }
 
-    const updateInspection = () => {
-
+    const updateInspection = (payload) => {
+        const elementToChange = ['inspectionDate', 'queenSpotted', "broodspotted", "honeyStores_kg", "hiveHealth", "comments"]
+        const object = {}
+        elementToChange.forEach(element => {
+            object[element] = payload[element]
+        })
+        console.log(object)
+        const newInspection = Object.assign(colonyData, object)
+        BeeServices.updateInspection(apiaryData[selectedApiary]._id, colonyData._id, newInspection)
+        
+        
     }
 
     const deleteInspection = () => {
@@ -152,7 +161,7 @@ const ApiaryContainer = () => {
                         />
                         <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} getInspection={getInspection}/> } />
                         <Route path="/colony/edit" element={ <EditColony colonyData={colonyData} updateColony={updateColony}/> } />
-                        <Route path="/inspection/edit" element={ <EditInspection />} />
+                        <Route path="/inspection/edit" element={ <EditInspection inspection={inspection} updateInspection={updateInspection}/>} />
                     </Routes>
                 </Fragment>
             ):null}

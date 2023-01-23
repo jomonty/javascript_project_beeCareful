@@ -39,6 +39,17 @@ const BeeServices = {
         })
         .then(res => res.json());
 },
+// PUT Inspection
+    updateInspection (apiaries_id, colony_id, inspection) {
+        return fetch(baseURL + apiaries_id + "/colonies/" + colony_id + "/inspections/"+ inspection._id,{
+            method:'POST',
+            body: JSON.stringify(inspection),
+            headers: {
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json());
+},
 // PUT Apiaries
     updateApiaries(apiaries, apiaries_id) {
         return fetch(baseURL + apiaries_id, {
