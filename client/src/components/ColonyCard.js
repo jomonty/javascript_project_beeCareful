@@ -3,9 +3,20 @@ import SingleColony from "./SingleColony"
 import BeeServices from '../services/BeeService'
 
 const ColonyCard = ({colony,index}) => {
+    const findTheColony = async() =>{
+        const data = await BeeServices.getApiaries()
+        const findColony = data.map(element => {
+            return (element['colonies'].find(colonyElement => colonyElement['name'] == colony.name))
+        });
 
-    const handleClick = () => {
-        
+        return findColony[0]
+    }
+    
+    
+    const handleClick = async() => {
+        const theColony = await findTheColony()
+        BeeServices.deleteColonies(theColony.parent_id, theColony._id)
+        window.location.reload(false)
     }
     return (
         <ul>
