@@ -55,9 +55,9 @@ const EditInspection = ({inspection, updateInspection, selectedColony}) =>{
             hiveHealth: hiveHealth,
             comments: comments
         }
-        console.log(payload.broodSpotted)
 
         updateInspection(payload, selectedColony)
+        Navigate('/colonies')
         resetForm();
     }
 

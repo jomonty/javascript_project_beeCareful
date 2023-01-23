@@ -106,17 +106,21 @@ const ApiaryContainer = () => {
     const editInspection = (Inspection, selectedColony) => {
         setInspection(Inspection)
         setColonyData(selectedColony)
+        console.log(selectedColony)
     }
 
     const updateInspection = (payload, colonyData) => {
-        const elementToChange = ['inspectionDate', 'queenSpotted', "broodspotted", "honeyStores_kg", "hiveHealth", "comments"]
+        const elementToChange = ['inspectionDate', 'queenSpotted', "broodSpotted", "honeyStores_kg", "hiveHealth", "comments"]
         const object = {}
         elementToChange.forEach(element => {
             object[element] = payload[element]
         })
         const newInspection = Object.assign(inspection, object)
-        console.log(newInspection)
-        BeeServices.updateInspection(apiaryData[selectedApiary]._id, colonyData._id, newInspection)
+        console.log('123')
+        console.log(colonyData)
+        console.log(inspection._id)
+        console.log('123')
+        BeeServices.updateInspection(apiaryData[selectedApiary]._id, colonyData, newInspection)
         
         
     }
