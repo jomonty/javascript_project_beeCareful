@@ -19,10 +19,11 @@ const InspectionList = ({apiaryData, selectedColony, weather, addInspection, upd
                 {inspectionNodes}
             </ul>
             <h3>Add New Inspection</h3>
-            <NewInspectionForm addInspection={addInspection} />
-
-
-
+            <NewInspectionForm 
+                addInspection={addInspection} 
+                apiary_id={apiaryData._id}
+                colony_id={selectedColony}
+            />
         </>
     )
 }

@@ -8,7 +8,7 @@ const InspectionCard = ({inspection, deleteInspection}) => {
         
         <li>
             <b>Inspection Date: {inspection.inspectionDate} </b><br/>
-            Brood Spotted? {inspection.broodspotted} <br/>
+            Brood Spotted? {inspection.broodSpotted} <br/>
             Queen Spotted? {inspection.queenSpotted ? "yes" : "no"} <br/>
             Honey stores kg {inspection.honeyStores_kg} <br />
 

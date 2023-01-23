@@ -55,13 +55,31 @@ const ApiaryContainer = () => {
         })
     }
 
-	const addInspection = (payload) => {
+	const addInspection = (apiary_id, colony_id, inspection) => {
+        BeeServices.addInspection(apiary_id, colony_id, inspection)
+        .then(res => {
+            console.log(res);
+                const temp = [...apiaryData];
+                const colony = temp[selectedApiary].colonies.filter(colony => {
+                    console.log(colony._id);
+                    console.log(colony_id);
+                    return colony._id === colony_id;
+                })[0]
+                console.log(colony);
+                const col_index = temp[selectedApiary].colonies.indexOf(colony);
+                console.log(col_index);
+                console.log(res);
+                temp[selectedApiary].colonies[col_index].inspections.push(res);
+                console.log(temp[selectedApiary].colonies[col_index]);
+                console.log(res);
+                setApiaryData(temp);
+            })
         
-        const temp = [...apiaryData]
-        temp[0].colonies[0].inspections.push(payload)
-        console.log(payload)
-        setApiaryData(temp)
-        BeeServices.deleteInspection(temp[0]._id,payload)
+        // const temp = [...apiaryData]
+        // temp[0].colonies[0].inspections.push(payload)
+        // console.log(payload)
+        // setApiaryData(temp)
+        // BeeServices.deleteInspection(temp[0]._id,payload)
     }
 
     const updateInspection = () => {

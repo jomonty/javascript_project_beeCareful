@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const NewInspectionForm = ({addInspection}) => {
+const NewInspectionForm = ({ addInspection, apiary_id, colony_id }) => {
 
     const [date,setDate] = useState("")
     const [queenSpotted,setQueenSpotted] = useState("")
@@ -45,15 +45,15 @@ const NewInspectionForm = ({addInspection}) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const payload = {
-            date,
-            queenSpotted,
-            broodSpotted,
-            honey,
-            hiveHealth,
-            comments
+            inspectionDate: date,
+            queenSpotted: queenSpotted,
+            broodSpotted: broodSpotted,
+            honeyStores_kg: honey,
+            hiveHealth: hiveHealth,
+            comments: comments
         }
 
-        addInspection(payload)
+        addInspection(apiary_id, colony_id, payload)
 
         resetForm();
     }

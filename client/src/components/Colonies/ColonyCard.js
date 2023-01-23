@@ -33,16 +33,17 @@ const ColonyCard = ({colony, deleteColony}) => {
                 <p>Queen Birth Month: {colony.queenBirthMonth}</p>
                 {hasInspections ? 
                     <>
-                        <p>Latest Inspection Date: {latestInspection[0].inspectionDate}</p>
-                        <p>Hive Health: {latestInspection[0].hiveHealth}</p>
+                        {/* <p>Latest Inspection Date: {latestInspection[0].inspectionDate}</p> */}
+                        {/* <p>Hive Health: {latestInspection[0].hiveHealth}</p> */}
                     </> : 
                     <>
                         <p>No Inspection Data</p>
-                    </>}
+                    </>
+                }
                 
                 <button onClick={handleClick}>Remove Colony</button>
             </div>
     )
-}
+};
 
-export default ColonyCard
+export default ColonyCard;

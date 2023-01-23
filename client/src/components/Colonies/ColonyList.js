@@ -4,6 +4,7 @@ import NewColonyForm from "./NewColonyForm"
 
 const ColonyList = ({apiaryData, weather, addColony, updateColony, deleteColony}) => {
 
+    console.log(apiaryData);
     const colonyNodes = apiaryData.colonies.map((colony,index) => {
         return <ColonyCard colony={colony} key={index} deleteColony={deleteColony}/>
     })
