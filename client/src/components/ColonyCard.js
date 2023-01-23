@@ -15,7 +15,7 @@ const ColonyCard = ({colony,index, setSelectedColony}) => {
 
     //     return findColony[0]
     // }
-=======
+
 
     
     
