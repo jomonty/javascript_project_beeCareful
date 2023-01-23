@@ -1,9 +1,18 @@
+import InspectionCard from "./InspectionCard"
 
+const InspectionList = ({apiaryData, addInspection}) => {
 
-const InspectionList = () => {
+    console.log(apiaryData[0].colonies[0].inspections);
+
+    const inspectionNodes = apiaryData[0].colonies[0].inspections.map((inspection,index) => {
+        return <InspectionCard inspection={inspection} key={index} addInspection={addInspection} />
+    })
+
     return (
         <>
-            <h1>Inspection List</h1>
+            <ul>
+                {inspectionNodes}
+            </ul>
         </>
     )
 }
