@@ -74,7 +74,7 @@ const NewInspectionForm = ({addInspection}) => {
             <input type="text" value={honey} placeholder="Honey [kg]" name="honey" onChange={handleHoney}/>
             <input type="text" value={hiveHealth} placeholder="What's the hive health?" name="hiveHealth" onChange={handleHiveHealth}/>
             <input type="text" value={comments} placeholder="Comments" name="comments" onChange={handleComment}/>
-            <button type="submit" onClick={handleSubmit}>Add Colony</button>
+            <button type="submit" onClick={handleSubmit}>Add Inspection</button>
         </form>
     )
 }
