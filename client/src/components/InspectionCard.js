@@ -1,9 +1,10 @@
 
 
-const InspectionCard = () => {
+const InspectionCard = ({inspection}) => {
     return (
         <>
             <h1>Inspection Card</h1>
+            <p>{inspection.inspectionDate}</p>
         </>
     )
 }

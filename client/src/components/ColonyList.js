@@ -1,11 +1,13 @@
 import ColonyCard from "./ColonyCard"
+import WeatherGrid from '../components/WeatherGrid';
+import NewColonyForm from "../components/NewColonyForm"
 
-const ColonyList = ({apiaryData}) => {
+const ColonyList = ({apiaryData, addColony, weather}) => {
 
 
     
 
-    const colonyNodes = apiaryData[0].colonies.map((colony,index) => {
+    const colonyNodes = apiaryData.colonies.map((colony,index) => {
         return <ColonyCard colony={colony} key={index}/>
     })
     
@@ -16,7 +18,10 @@ const ColonyList = ({apiaryData}) => {
             <ul>
                 {colonyNodes}
             </ul>
-       
+            <NewColonyForm addColony={addColony}/>
+            <WeatherGrid weather={weather}/>
+            
+
         </>
     )
 }
