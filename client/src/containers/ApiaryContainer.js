@@ -19,6 +19,8 @@ const ApiaryContainer = () => {
 
     const [colonyData,setColonyData] = useState()
 
+    const [inspection, setInspection] = useState()
+
     
 	useEffect(() => {
 		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g64%204bu?unitGroup=uk&key=Q86C2HV4D2FX4MKNCXF235DBE&contentType=json")
@@ -71,6 +73,10 @@ const ApiaryContainer = () => {
                 setApiaryData(temp);
             }
         })
+    }
+
+    const getInspection = (Inspection) => {
+
     }
 
 	const addInspection = (apiary_id, colony_id, inspection) => {
@@ -143,7 +149,7 @@ const ApiaryContainer = () => {
                                         /> 
                                     } 
                         />
-                        <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData}/> } />
+                        <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} getInspection={getInspection}/> } />
                         <Route path="/colony/edit" element={ <EditColony colonyData={colonyData} updateColony={updateColony}/> } />
 
                     </Routes>
