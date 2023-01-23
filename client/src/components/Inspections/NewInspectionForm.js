@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { addInspection } from '../services/BeeService'
-
 
 const NewInspectionForm = ({addInspection}) => {
 

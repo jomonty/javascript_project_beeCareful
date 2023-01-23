@@ -1,6 +1,6 @@
 import ColonyCard from "./ColonyCard"
-import WeatherGrid from '../components/WeatherGrid';
-import NewColonyForm from "../components/NewColonyForm"
+import WeatherGrid from '../Weather/WeatherGrid'
+import NewColonyForm from "./NewColonyForm"
 
 const ColonyList = ({apiaryData, addColony, weather}) => {
 

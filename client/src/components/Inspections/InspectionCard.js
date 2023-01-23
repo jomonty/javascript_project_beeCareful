@@ -1,5 +1,5 @@
 import {  Link } from 'react-router-dom'
-import BeeServices from '../services/BeeService';
+import BeeServices from '../../services/BeeService';
 
 
 const InspectionCard = ({inspection}) => {

@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import InspectionList from './InspectionList';
+import InspectionList from '../Inspections/InspectionList';
 
 const SingleColony = ({apiaryData, selectedColony}) => {
 

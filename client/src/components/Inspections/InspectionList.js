@@ -1,12 +1,8 @@
-
 import InspectionCard from "./InspectionCard"
 import NewInspectionForm from "./NewInspectionForm";
 
 
-
-import InspectionCard from './InspectionCard';
-
-const InspectionList = ({apiaryData, selectedColony}) => {
+const InspectionList = ({apiaryData, selectedColony, addInspection}) => {
 
     const colony = apiaryData.colonies.filter(colony => {
         return colony._id === selectedColony;

@@ -1,12 +1,12 @@
 import {useState, useEffect, Fragment} from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ColonyList from "../components/ColonyList";
-import WeatherGrid from '../components/WeatherGrid';
+import ColonyList from '../components/Colonies/ColonyList';
+
+
 import NavBar from '../components/NavBar';
-import InspectionList from "../components/InspectionList"
-import NewColonyForm from "../components/NewColonyForm"
+import InspectionList from "../components/Inspections/InspectionList"
 import BeeServices from '../services/BeeService';
-import SingleColony from '../components/SingleColony';
+import SingleColony from '../components/Colonies/SingleColony';
 
 const ApiaryContainer = () => {
 
@@ -60,12 +60,7 @@ const ApiaryContainer = () => {
 
                         <Route 
                             path="/" 
-                            // element={ <ColonyList 
-                            //                 apiaryData={apiaryData[selectedApiary]} 
-                            //                 addColony={addColony}
-                            //                 weather={weather}
-                            //                 /> 
-                            //         } 
+                            
                         />
                         <Route
                             path="/colonies"
@@ -84,7 +79,7 @@ const ApiaryContainer = () => {
                                         /> 
                                     } 
                         />
-                        <Route path="/inspections" element={ <InspectionList /> } />
+                        <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData}/> } />
 
                     </Routes>
                 </Fragment>

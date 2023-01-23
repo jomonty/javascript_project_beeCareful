@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import SingleColony from "./SingleColony"
-import BeeServices from '../services/BeeService'
+import BeeServices from '../../services/BeeService'
 
 
 const ColonyCard = ({colony,index, setSelectedColony}) => {
@@ -34,7 +34,6 @@ const ColonyCard = ({colony,index, setSelectedColony}) => {
             <li>
                 
                 <Link to={`/colony?id=${colony._id}`}>Colony Name: {colony.name} </Link>
-                {/* Colony Name: {colony.name} */}
                 <br/>
                 Queen Name: {colony.queenName}<br/>
                 {/* <button onClick={handleClick}>Remove Colony</button> */}
