@@ -39,6 +39,17 @@ const ApiaryContainer = () => {
         BeeServices.addColonies(temp[0]._id,payload)
     }
 
+
+	const addInspection = (payload) => {
+        
+        const temp = [...apiaryData]
+        temp[0].colonies[0].inspections.push(payload)
+        console.log(payload)
+        setApiaryData(temp)
+        BeeServices.deleteInspection(temp[0]._id,payload)
+    }
+
+
     return (
         <Router>
             {apiaryData.length > 0 && weather.length > 0 ? (
@@ -46,7 +57,7 @@ const ApiaryContainer = () => {
                     <NavBar /> 
                     <Routes>
                         <Route path="/" element={ <ColonyList apiaryData={apiaryData} /> } />
-                        <Route path="/inspections" element={ <InspectionList /> } />
+                        <Route path="/inspections" element={ <InspectionList apiaryData={apiaryData} addInspection={addInspection}/> } />
                     </Routes>
                     <NewColonyForm addColony={addColony} />
                     <WeatherGrid weather={weather}/>
