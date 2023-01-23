@@ -4,9 +4,9 @@ import ColonyList from '../components/Colonies/ColonyList';
 
 
 import NavBar from '../components/NavBar';
-import InspectionList from "../components/Inspections/InspectionList"
+import InspectionList from "../components/SingleColony/InspectionList"
 import BeeServices from '../services/BeeService';
-import SingleColony from '../components/Colonies/SingleColony';
+import SingleColony from '../components/SingleColony/SingleColony';
 
 const ApiaryContainer = () => {
 
@@ -40,6 +40,12 @@ const ApiaryContainer = () => {
         BeeServices.addColonies(temp[0]._id,payload)
     }
 
+    const updateColony = () => {
+
+    }
+    const deleteColony = () => {
+
+    }
 
 	const addInspection = (payload) => {
         
@@ -48,6 +54,14 @@ const ApiaryContainer = () => {
         console.log(payload)
         setApiaryData(temp)
         BeeServices.deleteInspection(temp[0]._id,payload)
+    }
+
+    const updateInspection = () => {
+
+    }
+
+    const deleteInspection = () => {
+
     }
 
 
@@ -66,8 +80,10 @@ const ApiaryContainer = () => {
                             path="/colonies"
                             element={ <ColonyList 
                                             apiaryData={apiaryData[selectedApiary]} 
-                                            addColony={addColony}
                                             weather={weather}
+                                            addColony={addColony}
+                                            updateColony={updateColony}
+                                            deleteColony={deleteColony}
                                         />
                                     }
                         />
@@ -75,7 +91,10 @@ const ApiaryContainer = () => {
                             path="/colony" 
                             element={ <SingleColony 
                                             apiaryData={apiaryData[selectedApiary]}
-                                            // selectedColony={selectedColony}
+                                            weather={weather}
+                                            addInspection={addInspection}
+                                            updateInspection={updateInspection}
+                                            deleteInspection={deleteInspection}
                                         /> 
                                     } 
                         />

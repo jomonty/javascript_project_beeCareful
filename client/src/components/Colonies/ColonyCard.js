@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import SingleColony from "./SingleColony"
+import SingleColony from "../SingleColony/SingleColony"
 import BeeServices from '../../services/BeeService'
 
 

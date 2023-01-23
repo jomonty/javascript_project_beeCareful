@@ -2,13 +2,13 @@ import ColonyCard from "./ColonyCard"
 import WeatherGrid from '../Weather/WeatherGrid'
 import NewColonyForm from "./NewColonyForm"
 
-const ColonyList = ({apiaryData, addColony, weather}) => {
+const ColonyList = ({apiaryData, weather, addColony, updateColony, deleteColony}) => {
 
 
     
 
     const colonyNodes = apiaryData.colonies.map((colony,index) => {
-        return <ColonyCard colony={colony} key={index}/>
+        return <ColonyCard colony={colony} key={index} deleteColony={deleteColony}/>
     })
     
 
