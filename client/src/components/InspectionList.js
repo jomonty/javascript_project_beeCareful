@@ -1,4 +1,5 @@
 import InspectionCard from "./InspectionCard"
+import NewInspectionForm from "./NewInspectionForm";
 
 const InspectionList = ({apiaryData, addInspection}) => {
 
@@ -13,6 +14,7 @@ const InspectionList = ({apiaryData, addInspection}) => {
             <ul>
                 {inspectionNodes}
             </ul>
+            <NewInspectionForm addInspection={addInspection} />
         </>
     )
 }

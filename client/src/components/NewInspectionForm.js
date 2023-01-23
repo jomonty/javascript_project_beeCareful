@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { addInspection } from '../services/BeeService'
 
 
-const InspectionForm = () => {
+const NewInspectionForm = ({addInspection}) => {
 
     const [date,setDate] = useState("")
     const [queenSpotted,setQueenSpotted] = useState("")
     const [broodSpotted,setBroodSpotted] = useState("")
-    const [honey,setHoney] = useState(0)
+    const [honey,setHoney] = useState("")
     const [hiveHealth,setHiveHealth] = useState("")
     const [comments,setComments] = useState("")
 
@@ -29,6 +29,10 @@ const InspectionForm = () => {
 
     const handleHiveHealth = (event) => {
         setHiveHealth(event.target.value)
+    }
+
+    const handleComment = (event) => {
+        setComments(event.target.value)
     }
 
     const resetForm = () => {
@@ -53,7 +57,7 @@ const InspectionForm = () => {
 
         addInspection(payload)
 
-        resetForm;
+        resetForm();
     }
 
 
@@ -61,12 +65,20 @@ const InspectionForm = () => {
 
     return (
         <form>
-            <input type="text" value={date} placeholder="name" name="name" onChange={handleNameChange}/>
-            <input type="text" value={queenSpotted} placeholder="Was queen spotted?" name="queenName" onChange={handleQueenNameChange}/>
-            <input type="dropdown" value={broodSpotted} placeholder="Brood Spotted?" name="queenBirthMonth" onChange={handleQueenBirthMonthChange}/>
+            <label>Inspection Date: </label><input type="date" value={date} placeholder="name" name="name" onChange={handleDateChange}/>
+            <input type="text" value={queenSpotted} placeholder="Was queen spotted?" name="queenSpotted" onChange={handleQueenSpotted}/>
+            <label>Brood spotted?</label><select value={broodSpotted} placeholder="Brood Spotted?" name="broodSpotted" onChange={handleBroodSpotted}>
+                <option value="normal">Normal</option>
+                <option value="compact">Compact</option>
+                <option valie="spotty">Spotty</option>
+                <option value="No">No</option>
+            </select>
+            <input type="text" value={honey} placeholder="Honey [kg]" name="honey" onChange={handleHoney}/>
+            <input type="text" value={hiveHealth} placeholder="What's the hive health?" name="hiveHealth" onChange={handleHiveHealth}/>
+            <input type="text" value={comments} placeholder="Comments" name="comments" onChange={handleComment}/>
             <button type="submit" onClick={handleSubmit}>Add Colony</button>
         </form>
     )
 }
 
-export default InspectionForm;
+export default NewInspectionForm;

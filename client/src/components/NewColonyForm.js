@@ -43,7 +43,7 @@ const NewColonyForm = ({ addColony }) => {
         <form>
             <input type="text" value={name} placeholder="name" name="name" onChange={handleNameChange}/>
             <input type="text" value={queenName} placeholder="Queen's name" name="queenName" onChange={handleQueenNameChange}/>
-            <input type="text" value={queenBirthMonth} placeholder="Queen's DOB" name="queenBirthMonth" onChange={handleQueenBirthMonthChange}/>
+            <input type="date" value={queenBirthMonth} placeholder="Queen's DOB" name="queenBirthMonth" onChange={handleQueenBirthMonthChange}/>
             <button type="submit" onClick={handleSubmit}>Add Colony</button>
         </form>
     )
