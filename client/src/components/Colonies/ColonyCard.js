@@ -43,7 +43,7 @@ const ColonyCard = ({api_id, colony, deleteColony, editColony}) => {
                 <div className='flip-card-back'>
                     <Link to={`/colonies/${colony._id}`}><button className='btn-add-colony'>See details</button></Link>
                     <p>Queen Name: {colony.queenName}</p>
-                    <p>Queen Birth Month: {queenAgeMonths()}</p>
+                    <p>Queen's Age: {queenAgeMonths()} months</p>
                     {hasInspections ?
                         <>
                             {/* <p>Latest Inspection Date: {latestInspection[0].inspectionDate}</p> */}
@@ -56,7 +56,7 @@ const ColonyCard = ({api_id, colony, deleteColony, editColony}) => {
                     <div className='colony-card-buttons'>
                     <button onClick={handleRemoveClick} className="btn-add-colony">Remove Colony</button>
                     <Link to={`/colonies/${colony._id}/edit`}>
-                      <button>Edit</button>
+                      <button  className="btn-add-colony">Edit</button>
                     </Link>
                     </div>
                 </div>
