@@ -1,0 +1,21 @@
+.btn-add-inspection{
+  background: #FBCA1F;
+  font-family: inherit;
+  padding: 0.6em 1.3em;
+  font-weight: 900;
+  font-size: 14px;
+  border: 3px solid black;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
+}
+    
+      .btn-add-inspection:hover {
+        transform: translate(-0.05em, -0.05em);
+        box-shadow: 0.15em 0.15em;
+        cursor: pointer;
+      }
+    
+      .btn-add-inspection:active {
+        transform: translate(0.05em, 0.05em);
+    box-shadow: 0.05em 0.05em;
+      }
