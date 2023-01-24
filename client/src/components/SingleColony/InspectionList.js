@@ -3,14 +3,14 @@ import NewInspectionForm from "./NewInspectionForm";
 import './InspectionList.css'
 
 
-const InspectionList = ({apiaryData, selectedColony, weather, addInspection, updateInspection, deleteInspection}) => {
+const InspectionList = ({apiaryData, selectedColony, weather, addInspection, updateInspection, deleteInspection, editInspection}) => {
 
     const colony = apiaryData.colonies.filter(colony => {
         return colony._id === selectedColony;
     })[0];
 
     const inspectionNodes = colony.inspections.map((inspection, index) => {
-        return <InspectionCard key={index} inspection={inspection} deleteInspection={deleteInspection}/>
+        return <InspectionCard key={index} inspection={inspection} deleteInspection={deleteInspection} editInspection={editInspection} selectedColony={selectedColony}/>
     })
 
     return (
