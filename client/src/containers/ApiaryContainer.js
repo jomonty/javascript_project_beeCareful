@@ -55,21 +55,22 @@ const ApiaryContainer = () => {
         })
     }
 
-    const editColony = (colony) =>{
-        setColonyData(colony)
-    }
+    // const editColony = (colony) =>{
+    //     setColonyData(colony)
+    // }
 
-    const updateColony = (payload) => {
-        const elementToChange = ['name', 'queenName', "queenBirthMonth"]
-        const object = {}
-        elementToChange.forEach(element => {
-            object[element] = payload[element]
+    const editColony = (apiary_id, colony_id, colony) => {
+        BeeServices.updateColonies(apiary_id, colony_id, colony)
+        .then(res => {
+            const temp = [...apiaryData];
+            const oldColony = temp[selectedApiary]
+            .colonies
+            .filter(old_col => old_col._id === colony._id)
+            .at(0);
+            const index = temp[selectedApiary].colonies.indexOf(oldColony);
+            temp[selectedApiary].colonies[index] = res;
+            setApiaryData(temp);
         })
-        console.log(object)
-        const newColony = Object.assign(colonyData, object)
-        BeeServices.updateColonies(apiaryData[selectedApiary]._id, colonyData._id, newColony)
-        
-        
     }
     
     const deleteColony = (colony) => {
@@ -156,7 +157,6 @@ const ApiaryContainer = () => {
                                     apiaryData={apiaryData[selectedApiary]} 
                                     weather={weather}
                                     addColony={addColony}
-                                    updateColony={updateColony}
                                     deleteColony={deleteColony}
                                     editColony={editColony}
                                 />
@@ -174,7 +174,14 @@ const ApiaryContainer = () => {
                             } 
                 />
                 <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} editInspection={editInspection} deleteInspection={deleteInspection}/> } />
-                <Route path="/colony/:col_id/edit" element={ <EditColony colonyData={colonyData} updateColony={updateColony}/> } />
+                <Route 
+                    path="/colony/:col_id/edit" 
+                    element={ <EditColony 
+                                    apiaryData={apiaryData[selectedApiary]} 
+                                    editColony={editColony}
+                                /> 
+                            } 
+                />
                 <Route path="/inspection/edit" element={ <EditInspection inspection={inspection} updateInspection={updateInspection} selectedColony={colonyData}/>} />
             </Routes>
         </Router>

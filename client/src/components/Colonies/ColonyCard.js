@@ -31,12 +31,6 @@ const ColonyCard = ({api_id, colony, deleteColony, editColony}) => {
         deleteColony(colony);
     };
 
-    const handleEditClick = () => {
-        editColony(colony);
-        Navigate(`/colony/${colony._id}edit`)
-    }
-
-
     return (
         
             <div>
@@ -55,7 +49,9 @@ const ColonyCard = ({api_id, colony, deleteColony, editColony}) => {
                 }
                 
                 <button onClick={handleRemoveClick}>Remove Colony</button>
-                <button onClick={handleEditClick}>Edit Colony</button>
+                <Link to={`/colony/${colony._id}/edit`}>
+                    <button>Edit</button>
+                </Link>
             </div>
     )
 };

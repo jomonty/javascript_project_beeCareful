@@ -3,7 +3,7 @@ import WeatherGrid from '../Weather/WeatherGrid'
 import NewColonyForm from "./NewColonyForm"
 import './ColonyList.css'
 
-const ColonyList = ({apiaryData, weather, addColony, updateColony, deleteColony, editColony}) => {
+const ColonyList = ({apiaryData, weather, addColony, deleteColony, editColony}) => {
 
     if (!apiaryData) {
         return (
