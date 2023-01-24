@@ -16,7 +16,7 @@ const ColonyList = ({apiaryData, weather, addColony, deleteColony, editColony}) 
     })
     
     return (
-        <div>
+        <div className="colony-page-wrapper">
             <ul className="colony-cards-wrapper">
                 {colonyNodes}
             </ul>
