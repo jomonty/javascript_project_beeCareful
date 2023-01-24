@@ -125,9 +125,21 @@ const ApiaryContainer = () => {
         
     }
 
-    const deleteInspection = () => {
-
+    const deleteInspection = (inspection, selectedColony) => {
+        BeeServices.deleteInspection(apiaryData[selectedApiary]._id, selectedColony)
+        .then(res => {
+            if (res.status === 200) {
+                const temp = [...apiaryData];
+                const colony = temp[selectedApiary].colonies.find(element => element._id === selectedColony);
+                const colonyIndex = temp[selectedApiary].colonies.indexOf(colony)
+                const inspectionIndex =  temp[selectedApiary].colonies[colonyIndex]['inspection'].indexOf(inspection)
+                temp[selectedApiary].colonies[colonyIndex]['inspection'](inspectionIndex, 1);
+                setApiaryData(temp);
+            }
+        })
     }
+
+    
 
 
     return (
@@ -164,7 +176,7 @@ const ApiaryContainer = () => {
                                         /> 
                                     } 
                         />
-                        <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} editInspection={editInspection}/> } />
+                        <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} editInspection={editInspection} deleteInspection={deleteInspection}/> } />
                         <Route path="/colony/edit" element={ <EditColony colonyData={colonyData} updateColony={updateColony}/> } />
                         <Route path="/inspection/edit" element={ <EditInspection inspection={inspection} updateInspection={updateInspection} selectedColony={colonyData}/>} />
                     </Routes>
