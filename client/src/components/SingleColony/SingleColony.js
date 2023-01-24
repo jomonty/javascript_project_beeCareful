@@ -27,7 +27,7 @@ const SingleColony = ({apiaryData, weather, addInspection, updateInspection, del
                     Queen Name: {identifiedColony.queenName} <br/>
                 </li>
             </ul>
-            <Collapsble trigger="Inspections" className='collapsible'>
+            <Collapsble trigger="&#128270; View Inspections &#128269;" className='collapsible'>
             <h3>Inspections:</h3>
             <InspectionList 
                 apiaryData={apiaryData} 
