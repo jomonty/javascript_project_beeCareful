@@ -10,7 +10,7 @@
 .navbar {
     display: flex;
     list-style-type: none;
-    gap:2rem;
+    gap:6rem;
     font-size: 1.5rem;
     margin-right: 3rem;
 }
