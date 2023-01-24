@@ -10,7 +10,7 @@ const WeatherElement = ({ weather }) => {
 
 
     return (
-            <li id="weather-forecast-tile">
+            <li className="weather-forecast-tile">
                 <b>{getDayOfWeek(weather.datetime)}</b><br />
                 Temperature: {weather.temp}<span>&#8451;</span><br />
                 Wind Speed: {weather.windspeed} mph<br />
