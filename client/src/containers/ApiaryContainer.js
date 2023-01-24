@@ -108,9 +108,19 @@ const ApiaryContainer = () => {
     return (
         
         <Router>
-            <NavBar /> 
+            <NavBar 
+                apiaryData={apiaryData[selectedApiary]} 
+            /> 
             <Routes>
-                <Route path="/" element={<ApiaryList />}/>
+                <Route 
+                    path="/" 
+                    element={   <ApiaryList
+                                    apiaryData={apiaryData}
+                                    selectedApiary={selectedApiary}
+                                    setSelectedApiary={setSelectedApiary}
+                                />
+                            }
+                />
                 <Route
                     path="/colonies"
                     element={ <ColonyList 
