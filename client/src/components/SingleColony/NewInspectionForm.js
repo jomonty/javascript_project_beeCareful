@@ -3,79 +3,142 @@ import './NewInspectionForm.css'
 
 const NewInspectionForm = ({ addInspection, apiary_id, colony_id }) => {
 
-    const [date, setDate] = useState("")
-    const [queenSpotted, setQueenSpotted] = useState("")
-    const [broodSpotted, setBroodSpotted] = useState("")
-    const [honey, setHoney] = useState("")
-    const [hiveHealth, setHiveHealth] = useState("")
-    const [comments, setComments] = useState("")
+    const emptyInspection = {
+        inspectionDate: "",
+        queenSpotted: false,
+        broodSpotted: "",
+        honeyStores_kg: 0,
+        hiveHealth: "good",
+        comments: ""
+    }
 
+    const [newInspection, setNewInspection] = useState({
+        inspectionDate: "",
+        queenSpotted: false,
+        broodSpotted: "",
+        honeyStores_kg: 0,
+        hiveHealth: "",
+        comments: ""
+    });
+ 
     const handleDateChange = (event) => {
-        setDate(event.target.value)
+        const copyNewInspection = {...newInspection};
+        copyNewInspection.inspectionDate = `${event.target.value}`;
+        setNewInspection(copyNewInspection);
     }
 
     const handleQueenSpotted = (event) => {
-        setQueenSpotted(event.target.value)
+        const copyNewInspection = {...newInspection};
+        if (event.target.value === "true") {
+            copyNewInspection.queenSpotted = true;
+        } else {
+            copyNewInspection.queenSpotted = false;
+        }
+        setNewInspection(copyNewInspection);
     }
 
     const handleBroodSpotted = (event) => {
-        setBroodSpotted(event.target.value)
+        const copyNewInspection = {...newInspection};
+        copyNewInspection.broodSpotted = event.target.value;
+        setNewInspection(copyNewInspection);
     }
 
     const handleHoney = (event) => {
-        setHoney(event.target.value)
+        const copyNewInspection = {...newInspection};
+        copyNewInspection.honeyStores_kg = event.target.value;
+        setNewInspection(copyNewInspection);
     }
 
     const handleHiveHealth = (event) => {
-        setHiveHealth(event.target.value)
+        const copyNewInspection = {...newInspection};
+        copyNewInspection.hiveHealth = event.target.value;
+        setNewInspection(copyNewInspection);
     }
 
     const handleComment = (event) => {
-        setComments(event.target.value)
+        const copyNewInspection = {...newInspection};
+        copyNewInspection.comments = event.target.value;
+        setNewInspection(copyNewInspection);
     }
 
     const resetForm = () => {
-        setDate('')
-        setQueenSpotted('')
-        setBroodSpotted('')
-        setHoney('')
-        setHiveHealth('')
-        setComments('')
+        const copyEmptyInspection = {...emptyInspection};
+        setNewInspection(copyEmptyInspection);
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const payload = {
-            inspectionDate: date,
-            queenSpotted: queenSpotted,
-            broodSpotted: broodSpotted,
-            honeyStores_kg: honey,
-            hiveHealth: hiveHealth,
-            comments: comments
-        }
-
-        addInspection(apiary_id, colony_id, payload)
-
+        addInspection(apiary_id, colony_id, newInspection)
         resetForm();
     }
-
-
-
 
     return (
         <form className='form-wrapper'>
            <div className='input-wrapper'>
-            <label>Inspection Date: </label><input type="date" value={date} placeholder="name" name="name" onChange={handleDateChange}/>
-            <input type="text" value={queenSpotted} placeholder="Was queen spotted?" name="queenSpotted" onChange={handleQueenSpotted}/>
-            <label>Brood spotted?</label><select value={broodSpotted} placeholder="Brood Spotted?" name="broodSpotted" onChange={handleBroodSpotted}>
+
+            <label htmlFor="ins-date">Inspection Date: </label>
+            <input 
+                id="ins-date"
+                type="date" 
+                value={newInspection.inspectionDate} 
+                name="inspectionDate" 
+                onChange={handleDateChange}
+            />
+
+            <label htmlFor="queen-spotted">Queen Spotted?</label>
+            <select 
+                id="queen-spotted"
+                value={newInspection.queenSpotted}
+                name="queenSpotted"
+                onChange={handleQueenSpotted}
+            >
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+
+
+            <label htmlFor="brood-spotted">Brood spotted?</label>
+            <select 
+                id="brood-spotted"
+                value={newInspection.broodSpotted} 
+                name="broodSpotted" 
+                onChange={handleBroodSpotted}
+            >
                 <option value="normal">Normal</option>
                 <option value="compact">Compact</option>
                 <option value="spotty">Spotty</option>
                 <option value="No">No</option>
             </select>
-            <input type="text" value={honey} placeholder="Honey [kg]" name="honey" onChange={handleHoney}/>
-            <input type="text" value={hiveHealth} placeholder="What's the hive health?" name="hiveHealth" onChange={handleHiveHealth}/>
-            <input type="text" value={comments} placeholder="Comments" name="comments" onChange={handleComment}/>
+
+            <label htmlFor="honey-stores">Honey Stores (kg)</label>
+            <input 
+                id="honey-stores"
+                type="number" 
+                value={newInspection.honeyStores_kg} 
+                placeholder="Honey [kg]" 
+                name="honey" 
+                onChange={handleHoney}
+            />
+
+            <label htmlFor="hive-health">Hive Health</label>
+            <select
+                id="hive-health"
+                value={newInspection.hiveHealth}
+                name="hiveHealth"
+                onChange={handleHiveHealth}
+            >
+                <option value="good">Good</option>
+                <option value="ok">Ok</option>
+                <option value="poor">Poor</option>
+            </select>
+
+            <input 
+                type="text" 
+                value={newInspection.comments} 
+                placeholder="Comments" 
+                name="comments" 
+                onChange={handleComment}
+            />
             </div>
             <button type="submit" onClick={handleSubmit} className="btn-add-colony">Add Inspection</button>
         </form>
