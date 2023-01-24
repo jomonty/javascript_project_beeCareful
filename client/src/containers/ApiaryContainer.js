@@ -126,14 +126,14 @@ const ApiaryContainer = () => {
     }
 
     const deleteInspection = (inspection, selectedColony) => {
-        BeeServices.deleteInspection(apiaryData[selectedApiary]._id, selectedColony)
+        BeeServices.deleteInspection(apiaryData[selectedApiary]._id, selectedColony, inspection._id)
         .then(res => {
             if (res.status === 200) {
                 const temp = [...apiaryData];
                 const colony = temp[selectedApiary].colonies.find(element => element._id === selectedColony);
                 const colonyIndex = temp[selectedApiary].colonies.indexOf(colony)
-                const inspectionIndex =  temp[selectedApiary].colonies[colonyIndex]['inspection'].indexOf(inspection)
-                temp[selectedApiary].colonies[colonyIndex]['inspection'](inspectionIndex, 1);
+                const inspectionIndex =  temp[selectedApiary].colonies[colonyIndex]['inspections'].indexOf(inspection)
+                temp[selectedApiary].colonies[colonyIndex]['inspections'].splice(inspectionIndex, 1);
                 setApiaryData(temp);
             }
         })
