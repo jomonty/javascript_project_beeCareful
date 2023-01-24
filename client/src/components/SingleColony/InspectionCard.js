@@ -2,7 +2,7 @@ import {  Link } from 'react-router-dom'
 import './InspectionCard.css'
 
 
-const InspectionCard = ({ api_id, inspection, deleteInspection, selectedColony }) => {
+const InspectionCard = ({ inspection, deleteInspection, selectedColony }) => {
 
     const handleRemoveClick = () => {
         deleteInspection(inspection, selectedColony)

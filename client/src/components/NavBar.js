@@ -3,6 +3,13 @@ import "./NavBar.css";
 import logo from "../img/beecareful4.png";
 
 const NavBar = ({ apiaryData }) => {
+
+    if (!apiaryData) {
+        return (
+            <></>
+        )
+    };
+    
     return (
         <div className="header">
             <img src={logo} id="logo" alt=""/>
