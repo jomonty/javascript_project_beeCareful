@@ -1,9 +1,9 @@
-import {useState, useEffect, Fragment} from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import ColonyList from '../components/Colonies/ColonyList';
 import EditColony from '../components/EditColony';
 import EditInspection from '../components/EditInspection';
-
 
 import NavBar from '../components/NavBar';
 import InspectionList from "../components/SingleColony/InspectionList"
@@ -56,7 +56,6 @@ const ApiaryContainer = () => {
 
     const editColony = (colony) =>{
         setColonyData(colony)
-
     }
 
     const updateColony = (payload) => {
@@ -103,12 +102,6 @@ const ApiaryContainer = () => {
                 console.log(res);
                 setApiaryData(temp);
             })
-        
-        // const temp = [...apiaryData]
-        // temp[0].colonies[0].inspections.push(payload)
-        // console.log(payload)
-        // setApiaryData(temp)
-        // BeeServices.deleteInspection(temp[0]._id,payload)
     }
 
     const editInspection = (Inspection, selectedColony) => {
