@@ -16,6 +16,11 @@ const ColonyCard = ({colony, deleteColony, editColony}) => {
         return a > b ? a : b;
     });
 
+    function queenAgeMonths() {
+        const currentTime = Date.now()
+        const ageInMilliseconds = currentTime - Date.parse(colony.queenBirthMonth)
+        return Math.floor(ageInMilliseconds/2629746000)
+    }
 
     const latestInspection = colony.inspections.filter(inspection => {
         const inspectionDate = new Date(inspection.inspectionDate);
@@ -38,7 +43,7 @@ const ColonyCard = ({colony, deleteColony, editColony}) => {
                 <h3>Name: {colony.name}</h3>
                 <p><Link to={`/colonies/${colony._id}`}>See Details</Link></p>
                 <p>Queen Name: {colony.queenName}</p>
-                <p>Queen Birth Month: {colony.queenBirthMonth}</p>
+                <p>Queen Birth Month: {queenAgeMonths()}</p>
                 {hasInspections ? 
                     <>
                         {/* <p>Latest Inspection Date: {latestInspection[0].inspectionDate}</p> */}
