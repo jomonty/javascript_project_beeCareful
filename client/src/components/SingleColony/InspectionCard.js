@@ -13,6 +13,10 @@ const InspectionCard = ({inspection, deleteInspection, editInspection, selectedC
 
     }
 
+    const handleRemoveClick = () => {
+        deleteInspection(inspection, selectedColony)
+    }
+
     return (
         <>
         
@@ -21,6 +25,7 @@ const InspectionCard = ({inspection, deleteInspection, editInspection, selectedC
                 Brood Spotted? {inspection.broodSpotted} <br/>
                 Queen Spotted? {inspection.queenSpotted ? "yes" : "no"} <br/>
                 Honey stores kg {inspection.honeyStores_kg} <br />
+            <button onClick={handleRemoveClick}>Remove Inspection</button>
             <button onClick={handleEditClick}>Edit Inspection</button>
 
         </li>
