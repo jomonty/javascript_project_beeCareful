@@ -5,14 +5,11 @@ padding-top: 2rem;
 width: 13rem;
 height: 13rem;
 border-radius: 44% 56% 50% 50% / 30% 11% 89% 70%;
-background: linear-gradient(315deg, #ffbf00, #dd9b00);
-box-shadow:  5px 5px 10px #ff9500,
-             -5px -5px 10px #ff860d; 
+background: linear-gradient(315deg, #ffbf00, #FBCA1F);
+box-shadow:  5px 5px 10px #4a4949,
+             -5px -5px 10px #111111; 
 }
 
-img {
-    align-self: center;
-}
 
 #weather-forecast-tile:hover {
     box-shadow: 7px 5px 56px -14px #C3D900;
