@@ -1,4 +1,9 @@
 import './WeatherGridColony.css'
+import ReactDOM from 'react-dom'
+  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+  import { faCheck,faXmark } from '@fortawesome/free-solid-svg-icons'
+  
+
 
 const WeatherGridColony = ({ weather }) => {
 
@@ -9,29 +14,35 @@ const WeatherGridColony = ({ weather }) => {
     }
 
 
-
-
     const weatherColonyNodes = weather.map((weather, index) => {
-        return <ul key={index}>
-            <li><b>{getDayOfWeek(weather.datetime)}</b>
+
+
+
+
+        const iconToUse = weather.temp >= 5 && weather.windspeed <= 5 ? <div className='ok-icon'>faCheck </div>: faXmark
+
+
+
+
+
+        return (
+            <li className={weather.temp >= 5 && weather.windspeed >= 5  ? "weather-forecast-tile-good" : "weather-forecast-tile-bad" }><b>{getDayOfWeek(weather.datetime)}</b><br/>
                 <br />{weather.temp >= 5 ?
                     <div>Temperature OK for opening hive. ({weather.temp} &#8451;)</div> :
                     <div>Too cold to open hive. ({weather.temp} &#8451;)</div>}
 
                 {weather.windspeed >= 5 ?
-                    <div>Too windy. (Wind: {weather.windspeed} mph)</div> :
+                    <div>Windy conditions. Take care (Wind: {weather.windspeed} mph)</div> :
                     <div>Calm. (Wind: {weather.windspeed} mph)</div>}
-                
-                <img src={`/${weather.icon}.png`} className="weather-icon" />
-
+                    <FontAwesomeIcon icon={iconToUse} id="weather-icon" /> 
             </li>
-        </ul>
+        )
     })
 
     return (
-        <>
+        <ul className="weather-forecast-wrapper" >
             {weatherColonyNodes}
-        </>
+        </ul>
     )
 }
 
