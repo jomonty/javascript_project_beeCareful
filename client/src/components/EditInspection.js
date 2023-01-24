@@ -19,16 +19,13 @@ const EditInspection = ({ apiaryData, editInspection }) =>{
 
     const [insUpdate, setInsUpdate] = useState({...emptyInspection});
 
-    const [date,setDate] = useState("")
-    const [queenSpotted,setQueenSpotted] = useState("")
-    const [broodSpotted,setBroodSpotted] = useState("")
-    const [honey,setHoney] = useState("")
-    const [hiveHealth,setHiveHealth] = useState("")
-    const [comments,setComments] = useState("")
-
     useEffect(() => {
         if (apiaryData) {
-            const ins = apiaryData.colonies[col_id].inspections
+            const colony = apiaryData.colonies
+            .filter(colony => colony._id === col_id)
+            .at(0)
+            const col_index = apiaryData.colonies.indexOf(colony);
+            const ins = apiaryData.colonies[col_index].inspections
             .filter(ins => ins._id === ins_id)
             .at(0)
             setInsUpdate(ins);
