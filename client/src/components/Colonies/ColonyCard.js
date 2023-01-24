@@ -36,7 +36,7 @@ const ColonyCard = ({colony, deleteColony, editColony}) => {
         
             <div>
                 <h3>Name: {colony.name}</h3>
-                <p><Link to={`/colony?id=${colony._id}`}>See Details</Link></p>
+                <p><Link to={`/colonies/${colony._id}`}>See Details</Link></p>
                 <p>Queen Name: {colony.queenName}</p>
                 <p>Queen Birth Month: {colony.queenBirthMonth}</p>
                 {hasInspections ? 

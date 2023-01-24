@@ -1,19 +1,17 @@
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import InspectionList from './InspectionList';
 import WeatherGridColony from '../Weather/WeatherGridColony';
 import './SingleColony.css'
 
 const SingleColony = ({apiaryData, weather, addInspection, updateInspection, deleteInspection, editInspection}) => {
 
-    const location = useLocation();
-    const selectedColony = new URLSearchParams(location.search).get('id');
-
-    const identifiedColony = apiaryData.colonies.find(element => element._id === selectedColony)
-
-    
+    const { col_id } = useParams();
+    const identifiedColony = apiaryData.colonies.find(element => {
+        return element._id === col_id;
+    });
     
     return (
-        <>
+        <div>
             <ul>
                 <li>
                     Colony Name: {identifiedColony.name} <br/>
@@ -24,7 +22,7 @@ const SingleColony = ({apiaryData, weather, addInspection, updateInspection, del
             <h3>Inspections:</h3>
             <InspectionList 
                 apiaryData={apiaryData} 
-                selectedColony={selectedColony} 
+                selectedColony={col_id} 
                 addInspection={addInspection}
                 updateInspection={updateInspection}
                 deleteInspection={deleteInspection}
@@ -32,7 +30,7 @@ const SingleColony = ({apiaryData, weather, addInspection, updateInspection, del
             />
             <h3>Weather Forecast</h3>
             <WeatherGridColony weather={weather} />
-        </>
+        </div>
     )
 }
 

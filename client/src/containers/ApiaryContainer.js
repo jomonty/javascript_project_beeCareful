@@ -39,6 +39,12 @@ const ApiaryContainer = () => {
         })
     }, [])
 
+    if (apiaryData === []) {
+        return (
+            <h3>Loading...</h3>
+        )
+    }
+
     const addColony = (payload) => {
         BeeServices.addColonies(apiaryData[selectedApiary]._id,payload)
         .then(res => {
@@ -145,45 +151,38 @@ const ApiaryContainer = () => {
 
 
     return (
+        
         <Router>
-            {apiaryData.length > 0 && weather.length > 0 ? (
-                <Fragment>
-                    <NavBar /> 
-                    <Routes>
-
-                        <Route 
-                            path="/" 
-                            
-                        />
-                        <Route
-                            path="/colonies"
-                            element={ <ColonyList 
-                                            apiaryData={apiaryData[selectedApiary]} 
-                                            weather={weather}
-                                            addColony={addColony}
-                                            updateColony={updateColony}
-                                            deleteColony={deleteColony}
-                                            editColony={editColony}
-                                        />
-                                    }
-                        />
-                        <Route 
-                            path="/colony" 
-                            element={ <SingleColony 
-                                            apiaryData={apiaryData[selectedApiary]}
-                                            weather={weather}
-                                            addInspection={addInspection}
-                                            deleteInspection={deleteInspection}
-                                            editInspection={editInspection}
-                                        /> 
-                                    } 
-                        />
-                        <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} editInspection={editInspection} deleteInspection={deleteInspection}/> } />
-                        <Route path="/colony/edit" element={ <EditColony colonyData={colonyData} updateColony={updateColony}/> } />
-                        <Route path="/inspection/edit" element={ <EditInspection inspection={inspection} updateInspection={updateInspection} selectedColony={colonyData}/>} />
-                    </Routes>
-                </Fragment>
-            ):null}
+            <NavBar /> 
+            <Routes>
+                <Route path="/" />
+                <Route
+                    path="/colonies"
+                    element={ <ColonyList 
+                                    apiaryData={apiaryData[selectedApiary]} 
+                                    weather={weather}
+                                    addColony={addColony}
+                                    updateColony={updateColony}
+                                    deleteColony={deleteColony}
+                                    editColony={editColony}
+                                />
+                            }
+                />
+                <Route 
+                    path="/colonies/:col_id" 
+                    element={ <SingleColony 
+                                    apiaryData={apiaryData[selectedApiary]}
+                                    weather={weather}
+                                    addInspection={addInspection}
+                                    deleteInspection={deleteInspection}
+                                    editInspection={editInspection}
+                                /> 
+                            } 
+                />
+                <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} editInspection={editInspection} deleteInspection={deleteInspection}/> } />
+                <Route path="/colony/edit" element={ <EditColony colonyData={colonyData} updateColony={updateColony}/> } />
+                <Route path="/inspection/edit" element={ <EditInspection inspection={inspection} updateInspection={updateInspection} selectedColony={colonyData}/>} />
+            </Routes>
         </Router>
     )
 }
