@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import './ColonyCard.css'
 
-const ColonyCard = ({colony, deleteColony, editColony}) => {
+const ColonyCard = ({api_id, colony, deleteColony, editColony}) => {
 
     const Navigate = useNavigate()
 
@@ -28,7 +28,7 @@ const ColonyCard = ({colony, deleteColony, editColony}) => {
 
     const handleEditClick = () => {
         editColony(colony);
-        Navigate('/colony/edit')
+        Navigate(`/colony/${colony._id}edit`)
     }
 
 

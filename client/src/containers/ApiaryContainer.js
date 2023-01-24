@@ -174,7 +174,7 @@ const ApiaryContainer = () => {
                             } 
                 />
                 <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} editInspection={editInspection} deleteInspection={deleteInspection}/> } />
-                <Route path="/colony/edit" element={ <EditColony colonyData={colonyData} updateColony={updateColony}/> } />
+                <Route path="/colony/:col_id/edit" element={ <EditColony colonyData={colonyData} updateColony={updateColony}/> } />
                 <Route path="/inspection/edit" element={ <EditInspection inspection={inspection} updateInspection={updateInspection} selectedColony={colonyData}/>} />
             </Routes>
         </Router>
