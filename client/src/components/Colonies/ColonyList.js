@@ -5,7 +5,12 @@ import './ColonyList.css'
 
 const ColonyList = ({apiaryData, weather, addColony, updateColony, deleteColony, editColony}) => {
 
-    console.log(apiaryData);
+    if (!apiaryData) {
+        return (
+            <h3>Loading...</h3>
+        )
+    }
+
     const colonyNodes = apiaryData.colonies.map((colony,index) => {
         return <ColonyCard colony={colony} key={index} deleteColony={deleteColony} editColony={editColony}/>
     })
