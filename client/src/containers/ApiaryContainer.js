@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import ApiaryList from '../components/Apiaries/ApiaryList';
 import ColonyList from '../components/Colonies/ColonyList';
 import EditColony from '../components/EditColony';
 import EditInspection from '../components/EditInspection';
@@ -148,7 +149,7 @@ const ApiaryContainer = () => {
         <Router>
             <NavBar /> 
             <Routes>
-                <Route path="/" />
+                <Route path="/" element={<ApiaryList />}/>
                 <Route
                     path="/colonies"
                     element={ <ColonyList 
