@@ -1,4 +1,5 @@
 import ApiaryCard from './ApiaryCard';
+import './ApiaryList.css'
 
 const ApiaryList = ({ apiaryData, selectedApiary, setSelectedApiary }) => {
 
@@ -19,7 +20,7 @@ const ApiaryList = ({ apiaryData, selectedApiary, setSelectedApiary }) => {
     })
 
     return (
-        <div>
+        <div className='apiaries-wrapper'>
             {apiaryNodes}
         </div>
     )

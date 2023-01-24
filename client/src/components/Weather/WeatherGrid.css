@@ -1,6 +1,6 @@
 .weather-forecast-wrapper {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 4rem;
     margin-right: 3rem;
 }
