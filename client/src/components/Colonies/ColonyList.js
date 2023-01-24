@@ -20,9 +20,7 @@ const ColonyList = ({apiaryData, weather, addColony, deleteColony, editColony}) 
             <ul className="colony-cards-wrapper">
                 {colonyNodes}
             </ul>
-
             <NewColonyForm addColony={addColony}/>
-
             <WeatherGrid weather={weather}/>
 
         </div>
