@@ -19,7 +19,7 @@ const WeatherGridColony = ({ weather }) => {
 
 
 
-        const iconToUse = weather.temp >= 5 && weather.windspeed <= 5 ? <div className='ok-icon'>faCheck </div>: faXmark
+        const iconToUse = weather.temp >= 5 ? faCheck : faXmark
 
 
 
@@ -30,11 +30,14 @@ const WeatherGridColony = ({ weather }) => {
                 <br />{weather.temp >= 5 ?
                     <div>Temperature OK for opening hive. ({weather.temp} &#8451;)</div> :
                     <div>Too cold to open hive. ({weather.temp} &#8451;)</div>}
-
+                    
                 {weather.windspeed >= 5 ?
-                    <div>Windy conditions. Take care (Wind: {weather.windspeed} mph)</div> :
-                    <div>Calm. (Wind: {weather.windspeed} mph)</div>}
-                    <FontAwesomeIcon icon={iconToUse} id="weather-icon" /> 
+                    <div className='weather-grid-text'>Windy conditions. Take care (Wind: {weather.windspeed} mph)</div> :
+                    <div className='weather-grid-text'>Calm. (Wind: {weather.windspeed} mph)</div>}
+                  
+                <div class="fa-container">
+                {weather.temp >= 5 ?   <FontAwesomeIcon icon={faCheck} size="4x"/> : <FontAwesomeIcon icon={faXmark} size="4x" /> }
+                </div>
             </li>
         )
     })
