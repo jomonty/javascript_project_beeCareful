@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import './ColonyCard.css'
 
+
 const ColonyCard = ({ colony, deleteColony}) => {
 
     const hasInspections = colony.inspections.length > 0;
@@ -40,8 +41,10 @@ const ColonyCard = ({ colony, deleteColony}) => {
                 </div>
                 <div className='flip-card-back'>
                     <Link to={`/colonies/${colony._id}`}><button className='btn-add-colony'>See details</button></Link>
+                    <div id="colony-card-txt">
                     <p>Queen Name: {colony.queenName}</p>
                     <p>Queen's Age: {queenAgeMonths()} months</p>
+                    </div>
                     {hasInspections ?
                         <>
                             <p>Latest Inspection Date: {latestInspection[0].inspectionDate}</p>
@@ -52,10 +55,10 @@ const ColonyCard = ({ colony, deleteColony}) => {
                         </>
                     }
                     <div className='colony-card-buttons'>
-                    <button onClick={handleRemoveClick} className="btn-add-colony">Remove Colony</button>
                     <Link to={`/colonies/${colony._id}/edit`}>
-                      <button  className="btn-add-colony">Edit</button>
+                        <button className="btn-add-colony">Edit</button>
                     </Link>
+                        <button onClick={handleRemoveClick} className="btn-add-colony">Remove Colony</button>
                     </div>
                 </div>
             </div>
