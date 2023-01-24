@@ -35,7 +35,7 @@ padding-left: 33px;
  padding-bottom: 10px;
  padding-top: 10px;
  border-radius: 9px;
- background: rgba(255, 255, 0, 0.804);
+ background: rgba(255, 140, 0, 0.804);
  border: none;
  font-family: inherit;
  text-align: center;
@@ -44,7 +44,7 @@ padding-left: 33px;
   }
 
   .btn-add-colony:hover {
-    box-shadow: 7px 5px 56px -14px #C3D900;
+    box-shadow: 7px 5px 56px -14px #d9a600;
   }
 
   .btn-add-colony:active {
