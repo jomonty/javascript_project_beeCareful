@@ -76,7 +76,6 @@ const EditColony = ({ apiaryData, editColony}) => {
             <input 
                 type="text" 
                 value={colUpdate.name} 
-                // placeholder={''} 
                 name="name" 
                 onChange={handleNameChange}
             />
@@ -84,7 +83,6 @@ const EditColony = ({ apiaryData, editColony}) => {
             <input 
                 type="text" 
                 value={colUpdate.queenName} 
-                // placeholder={''} 
                 name="queenName" 
                 onChange={handleQueenNameChange}
             />
@@ -92,7 +90,6 @@ const EditColony = ({ apiaryData, editColony}) => {
             <input 
                 type="date" 
                 value={colUpdate.queenBirthMonth} 
-                // placeholder={''} 
                 name="queenBirthMonth" 
                 onChange={handleQueenBirthMonthChange} 
                 // onFocus={(e) => (e.target.type = "date")}

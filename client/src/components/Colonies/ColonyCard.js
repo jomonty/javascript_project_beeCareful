@@ -49,7 +49,7 @@ const ColonyCard = ({api_id, colony, deleteColony, editColony}) => {
                 }
                 
                 <button onClick={handleRemoveClick}>Remove Colony</button>
-                <Link to={`/colony/${colony._id}/edit`}>
+                <Link to={`/colonies/${colony._id}/edit`}>
                     <button>Edit</button>
                 </Link>
             </div>

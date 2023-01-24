@@ -6,6 +6,13 @@ import './SingleColony.css'
 const SingleColony = ({apiaryData, weather, addInspection, updateInspection, deleteInspection, editInspection}) => {
 
     const { col_id } = useParams();
+    
+    if (!apiaryData) {
+        return (
+            <h3>Loading...</h3>
+        )
+    }
+    
     const identifiedColony = apiaryData.colonies.find(element => {
         return element._id === col_id;
     });

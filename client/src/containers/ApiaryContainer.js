@@ -40,12 +40,13 @@ const ApiaryContainer = () => {
         })
     }, [])
 
-    if (apiaryData === []) {
+    if (!apiaryData) {
         return (
             <h3>Loading...</h3>
         )
     }
 
+    // Functions to add colonies to db, and effect changes to state.
     const addColony = (payload) => {
         BeeServices.addColonies(apiaryData[selectedApiary]._id,payload)
         .then(res => {
@@ -54,10 +55,6 @@ const ApiaryContainer = () => {
             setApiaryData(temp);
         })
     }
-
-    // const editColony = (colony) =>{
-    //     setColonyData(colony)
-    // }
 
     const editColony = (apiary_id, colony_id, colony) => {
         BeeServices.updateColonies(apiary_id, colony_id, colony)
@@ -85,45 +82,38 @@ const ApiaryContainer = () => {
         })
     }
 
+    // Functions to add inspections to db and effect changes to state
 	const addInspection = (apiary_id, colony_id, inspection) => {
         BeeServices.addInspection(apiary_id, colony_id, inspection)
         .then(res => {
-            console.log(res);
                 const temp = [...apiaryData];
                 const colony = temp[selectedApiary].colonies.filter(colony => {
-                    console.log(colony._id);
-                    console.log(colony_id);
                     return colony._id === colony_id;
                 })[0]
-                console.log(colony);
                 const col_index = temp[selectedApiary].colonies.indexOf(colony);
-                console.log(col_index);
-                console.log(res);
                 temp[selectedApiary].colonies[col_index].inspections.push(res);
-                console.log(temp[selectedApiary].colonies[col_index]);
-                console.log(res);
                 setApiaryData(temp);
             })
     }
 
-    const editInspection = (Inspection, selectedColony) => {
-        setInspection(Inspection)
-        setColonyData(selectedColony)
-        console.log(selectedColony)
-    }
+    // const editInspection = (Inspection, selectedColony) => {
+    //     setInspection(Inspection)
+    //     setColonyData(selectedColony)
+    //     console.log(selectedColony)
+    // }
 
-    const updateInspection = (payload, colonyData) => {
-        const elementToChange = ['inspectionDate', 'queenSpotted', "broodSpotted", "honeyStores_kg", "hiveHealth", "comments"]
-        const object = {}
-        elementToChange.forEach(element => {
-            object[element] = payload[element]
-        })
-        const newInspection = Object.assign(inspection, object)
-        console.log('123')
-        console.log(colonyData)
-        console.log(inspection._id)
-        console.log('123')
-        BeeServices.updateInspection(apiaryData[selectedApiary]._id, colonyData, newInspection)
+    const editInspection = (payload, colonyData) => {
+        // const elementToChange = ['inspectionDate', 'queenSpotted', "broodSpotted", "honeyStores_kg", "hiveHealth", "comments"]
+        // const object = {}
+        // elementToChange.forEach(element => {
+        //     object[element] = payload[element]
+        // })
+        // const newInspection = Object.assign(inspection, object)
+        // console.log('123')
+        // console.log(colonyData)
+        // console.log(inspection._id)
+        // console.log('123')
+        // BeeServices.updateInspection(apiaryData[selectedApiary]._id, colonyData, newInspection)
         
         
     }
@@ -175,14 +165,21 @@ const ApiaryContainer = () => {
                 />
                 <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} editInspection={editInspection} deleteInspection={deleteInspection}/> } />
                 <Route 
-                    path="/colony/:col_id/edit" 
+                    path="/colonies/:col_id/edit" 
                     element={ <EditColony 
                                     apiaryData={apiaryData[selectedApiary]} 
                                     editColony={editColony}
                                 /> 
                             } 
                 />
-                <Route path="/inspection/edit" element={ <EditInspection inspection={inspection} updateInspection={updateInspection} selectedColony={colonyData}/>} />
+                <Route 
+                    path="/colonies/:col_id/inspections/:ins_id/edit" 
+                    element={ <EditInspection 
+                                    apiaryData={apiaryData[selectedApiary]} 
+                                    editInspection={editInspection} 
+                                />
+                            } 
+                />
             </Routes>
         </Router>
     )
