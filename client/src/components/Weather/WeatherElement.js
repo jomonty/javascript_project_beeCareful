@@ -11,10 +11,10 @@ const WeatherElement = ({ weather }) => {
 
     return (
             <li className="weather-forecast-tile">
-                <b>{getDayOfWeek(weather.datetime)}</b><br />
-                Temperature: {weather.temp}<span>&#8451;</span><br />
-                Wind Speed: {weather.windspeed} mph<br />
-                <img src={`/${weather.icon}.png`} className="weather-icon" />
+                <h3><b>{getDayOfWeek(weather.datetime)}</b></h3>
+                <p>Temperature: {weather.temp}<span>&#8451;</span></p>
+                <p>Wind Speed: {weather.windspeed} mph</p>
+                <img src={`/${weather.icon}.png`} id="weather-icon" />
             </li>
     )
 }
