@@ -12,7 +12,11 @@ const ColonyList = ({apiaryData, weather, addColony, deleteColony, editColony}) 
     }
 
     const colonyNodes = apiaryData.colonies.map((colony,index) => {
-        return <ColonyCard api_id={apiaryData._id} colony={colony} key={index} deleteColony={deleteColony}/>
+        return <ColonyCard 
+                    key={index} 
+                    colony={colony} 
+                    deleteColony={deleteColony}
+                />
     })
     
     return (
@@ -22,7 +26,6 @@ const ColonyList = ({apiaryData, weather, addColony, deleteColony, editColony}) 
             </ul>
             <NewColonyForm addColony={addColony}/>
             <WeatherGrid weather={weather}/>
-
         </div>
     )
 };
