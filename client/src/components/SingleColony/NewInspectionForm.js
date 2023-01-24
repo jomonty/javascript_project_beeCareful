@@ -3,12 +3,12 @@ import './NewInspectionForm.css'
 
 const NewInspectionForm = ({ addInspection, apiary_id, colony_id }) => {
 
-    const [date,setDate] = useState("")
-    const [queenSpotted,setQueenSpotted] = useState("")
-    const [broodSpotted,setBroodSpotted] = useState("")
-    const [honey,setHoney] = useState("")
-    const [hiveHealth,setHiveHealth] = useState("")
-    const [comments,setComments] = useState("")
+    const [date, setDate] = useState("")
+    const [queenSpotted, setQueenSpotted] = useState("")
+    const [broodSpotted, setBroodSpotted] = useState("")
+    const [honey, setHoney] = useState("")
+    const [hiveHealth, setHiveHealth] = useState("")
+    const [comments, setComments] = useState("")
 
     const handleDateChange = (event) => {
         setDate(event.target.value)

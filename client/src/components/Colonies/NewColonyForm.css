@@ -1,0 +1,53 @@
+.input-wrapper input {
+    background-color: #eee;
+    border: none;
+    padding: .5rem;
+    font-size: 1rem;
+    width: 13em;
+    border-radius: 1rem;
+    color: lightcoral;
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+   }
+   
+   .input-wrapper input:focus {
+    outline-color: rgb(255, 213, 0);
+   }
+   
+   .input-wrapper {
+    display: flex;
+    align-items: center;
+    gap:.7rem;
+   }
+
+   .form-wrapper {
+    display: flex;
+    gap:0.7rem;
+    justify-content: center;
+   }
+
+
+  .btn-add-colony {
+font-weight: bold;
+font-size: 15px;
+padding-left: 33px;
+ padding-right: 33px;
+ padding-bottom: 10px;
+ padding-top: 10px;
+ border-radius: 9px;
+ background: rgba(255, 255, 0, 0.804);
+ border: none;
+ font-family: inherit;
+ text-align: center;
+ cursor: pointer;
+ transition: 0.4s;
+  }
+
+  .btn-add-colony:hover {
+    box-shadow: 7px 5px 56px -14px #C3D900;
+  }
+
+  .btn-add-colony:active {
+    transform: scale(0.97);
+ box-shadow: 7px 5px 56px -20px #C3D900;
+  }
