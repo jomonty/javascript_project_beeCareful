@@ -3,11 +3,13 @@ import './NewColonyForm.css'
 
 const NewColonyForm = ({ addColony }) => {
 
-    const [newColony, setNewColony] = useState({
+    const emptyColony = {
         name: "",
         queenName: "",
         queenBirthMonth: ""
-    });
+    };
+
+    const [newColony, setNewColony] = useState({...emptyColony});
  
     const handleNameChange = (event) => {
         const copyNewColony = {...newColony};
@@ -28,12 +30,7 @@ const NewColonyForm = ({ addColony }) => {
     }
 
     const resetForm = () => {
-        const copyNewColony = {
-            name: "",
-            queenName: "",
-            queenBirthMonth: ""
-        };
-        setNewColony(copyNewColony);
+        setNewColony({...emptyColony});
     }
 
     const handleSubmit = (event) => {

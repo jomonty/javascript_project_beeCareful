@@ -1,7 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom'
 import './ColonyCard.css'
 
-const ColonyCard = ({ colony, deleteColony, editColony }) => {
+const ColonyCard = ({api_id, colony, deleteColony, editColony}) => {
+
 
     const Navigate = useNavigate()
 
@@ -31,13 +32,8 @@ const ColonyCard = ({ colony, deleteColony, editColony }) => {
         deleteColony(colony);
     };
 
-    const handleEditClick = () => {
-        editColony(colony);
-        Navigate('/colony/edit')
-    }
-
-
     return (
+
 
         <div className='flip-card'>
             <div className='flip-card-inner'>
@@ -59,7 +55,9 @@ const ColonyCard = ({ colony, deleteColony, editColony }) => {
                     }
                     <div className='colony-card-buttons'>
                     <button onClick={handleRemoveClick} className="btn-add-colony">Remove Colony</button>
-                    <button onClick={handleEditClick} className="btn-add-colony">Edit Colony</button>
+                    <Link to={`/colonies/${colony._id}/edit`}>
+                      <button>Edit</button>
+                    </Link>
                     </div>
                 </div>
             </div>

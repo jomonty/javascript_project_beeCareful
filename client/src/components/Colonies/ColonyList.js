@@ -3,7 +3,7 @@ import WeatherGrid from '../Weather/WeatherGrid'
 import NewColonyForm from "./NewColonyForm"
 import './ColonyList.css'
 
-const ColonyList = ({apiaryData, weather, addColony, updateColony, deleteColony, editColony}) => {
+const ColonyList = ({apiaryData, weather, addColony, deleteColony, editColony}) => {
 
     if (!apiaryData) {
         return (
@@ -12,7 +12,7 @@ const ColonyList = ({apiaryData, weather, addColony, updateColony, deleteColony,
     }
 
     const colonyNodes = apiaryData.colonies.map((colony,index) => {
-        return <ColonyCard colony={colony} key={index} deleteColony={deleteColony} editColony={editColony}/>
+        return <ColonyCard api_id={apiaryData._id} colony={colony} key={index} deleteColony={deleteColony} editColony={editColony}/>
     })
     
     return (
