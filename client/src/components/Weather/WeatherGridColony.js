@@ -16,17 +16,11 @@ const WeatherGridColony = ({ weather }) => {
 
     const weatherColonyNodes = weather.map((weather, index) => {
 
-
-
-
         const iconToUse = weather.temp >= 5 ? faCheck : faXmark
 
 
-
-
-
         return (
-            <li className={weather.temp >= 5 && weather.windspeed >= 5  ? "weather-forecast-tile-good" : "weather-forecast-tile-bad" }><b>{getDayOfWeek(weather.datetime)}</b><br/>
+            <li key={index} className={weather.temp >= 5 && weather.windspeed >= 5  ? "weather-forecast-tile-good" : "weather-forecast-tile-bad" }><b>{getDayOfWeek(weather.datetime)}</b><br/>
                 <br />{weather.temp >= 5 ?
                     <div>Temperature OK for opening hive. ({weather.temp} &#8451;)</div> :
                     <div>Too cold to open hive. ({weather.temp} &#8451;)</div>}
@@ -35,7 +29,7 @@ const WeatherGridColony = ({ weather }) => {
                     <div className='weather-grid-text'>Windy conditions. Take care (Wind: {weather.windspeed} mph)</div> :
                     <div className='weather-grid-text'>Calm. (Wind: {weather.windspeed} mph)</div>}
                   
-                <div class="fa-container">
+                <div className="fa-container">
                 {weather.temp >= 5 ?   <FontAwesomeIcon icon={faCheck} size="4x"/> : <FontAwesomeIcon icon={faXmark} size="4x" /> }
                 </div>
             </li>
