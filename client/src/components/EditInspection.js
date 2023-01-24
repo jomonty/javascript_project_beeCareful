@@ -65,7 +65,8 @@ const EditInspection = ({inspection, updateInspection, selectedColony}) =>{
 
 
     return (
-        <form>
+        <form className="form-wrapper">
+            <div className="input-wrapper">
             <label>Inspection Date: </label><input type="date" value={date} placeholder={inspection.inspectionDate} name="name" onChange={handleDateChange}/>
             <input type="text" value={queenSpotted} placeholder={inspection.queenSpotted} name="queenSpotted" onChange={handleQueenSpotted}/>
             <label>Brood spotted?</label><select value={broodSpotted} placeholder={inspection.broodSpotted} name="broodSpotted" onChange={handleBroodSpotted}>
@@ -77,7 +78,8 @@ const EditInspection = ({inspection, updateInspection, selectedColony}) =>{
             <input type="text" value={honey} placeholder={inspection.honeyStores_kg} name="honey" onChange={handleHoney}/>
             <input type="text" value={hiveHealth} placeholder={inspection.hiveHealth} name="hiveHealth" onChange={handleHiveHealth}/>
             <input type="text" value={comments} placeholder={inspection.comments} name="comments" onChange={handleComment}/>
-            <button type="submit" onClick={handleSubmit}>Edit Inspection</button>
+            </div>
+            <button type="submit" onClick={handleSubmit} className="btn-add-colony">Edit Inspection</button>
         </form>
     )
 }

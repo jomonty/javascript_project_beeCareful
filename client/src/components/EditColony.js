@@ -41,14 +41,13 @@ const EditColony = ({ colonyData, updateColony}) => {
 
 
     return (
-        <form>
+        <form className="form-wrapper">
+            <div className="input-wrapper">
             <input type="text" value={name} placeholder={colonyData.name} name="name" onChange={handleNameChange}/>
             <input type="text" value={queenName} placeholder={colonyData.queenName} name="queenName" onChange={handleQueenNameChange}/>
-
             <input type="text" value={queenBirthMonth} placeholder={colonyData.queenBirthMonth} name="queenBirthMonth" onChange={handleQueenBirthMonthChange} onFocus={(e) => (e.target.type = "date")}/>
-
-
-            <button type="submit" onClick={handleSubmit}>Add Colony</button>
+            </div>
+            <button type="submit" onClick={handleSubmit} className="btn-add-colony">Add Colony</button>
         </form>
     )
 }
