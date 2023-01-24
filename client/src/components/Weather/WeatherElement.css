@@ -11,41 +11,5 @@ box-shadow:  5px 5px 10px #4a4949,
 }
 
 
-.weather-forecast-tile-good:hover {
-    box-shadow: 7px 5px 56px -14px #C3D900;
-}
-
-.weather-forecast-tile-bad:hover {
-    box-shadow: 7px 5px 56px -14px #C3D900;
-}
 
 
-.weather-forecast-tile-good {
-    list-style-type: none;
-    padding-left: 3rem;
-    padding-top: 2rem;
-    padding-right:2rem;
-    width: 13rem;
-    height: 13rem;
-    border-radius: 44% 56% 50% 50% / 30% 11% 89% 70%;
-    background: linear-gradient(315deg, #eeff00, #73ff00cd);
-    box-shadow:  5px 5px 10px #4a4949,
-                 -5px -5px 10px #111111; 
-    }
-
-    .weather-forecast-tile-bad {
-        list-style-type: none;
-        padding-left: 3rem;
-        padding-top: 2rem;
-        padding-right: 3rem;
-        width: 13rem;
-        height: 13rem;
-        border-radius: 44% 56% 50% 50% / 30% 11% 89% 70%;
-        background: linear-gradient(315deg, #ff0000b0, #fbae1f);
-        box-shadow:  5px 5px 10px #4a4949,
-                     -5px -5px 10px #111111; 
-        }
-
-       .ok-icon {
-        background-color: yellow;
-       }

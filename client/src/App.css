@@ -1,4 +1,4 @@
 body {
     background-image: url('~/public/polygon-scatter-haikei.png');
-    cursor: url('./cursor.cur'), auto;
+    cursor: url('~/public/cursor.cur'), auto;
 }
