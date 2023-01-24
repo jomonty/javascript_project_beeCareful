@@ -6,20 +6,13 @@ const NewInspectionForm = ({ addInspection, apiary_id, colony_id }) => {
     const emptyInspection = {
         inspectionDate: "",
         queenSpotted: false,
-        broodSpotted: "",
+        broodSpotted: "No",
         honeyStores_kg: 0,
         hiveHealth: "good",
         comments: ""
     }
 
-    const [newInspection, setNewInspection] = useState({
-        inspectionDate: "",
-        queenSpotted: false,
-        broodSpotted: "",
-        honeyStores_kg: 0,
-        hiveHealth: "",
-        comments: ""
-    });
+    const [newInspection, setNewInspection] = useState({...emptyInspection});
  
     const handleDateChange = (event) => {
         const copyNewInspection = {...newInspection};
@@ -62,8 +55,7 @@ const NewInspectionForm = ({ addInspection, apiary_id, colony_id }) => {
     }
 
     const resetForm = () => {
-        const copyEmptyInspection = {...emptyInspection};
-        setNewInspection(copyEmptyInspection);
+        setNewInspection({...emptyInspection});
     }
 
     const handleSubmit = (event) => {
@@ -96,8 +88,7 @@ const NewInspectionForm = ({ addInspection, apiary_id, colony_id }) => {
                 <option value="false">No</option>
             </select>
 
-
-            <label htmlFor="brood-spotted">Brood spotted?</label>
+            <label htmlFor="brood-spotted">Brood Spotted?</label>
             <select 
                 id="brood-spotted"
                 value={newInspection.broodSpotted} 
