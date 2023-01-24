@@ -1,0 +1,9 @@
+.collapsible {
+    border: solid;
+    width: 15rem;
+    
+}
+
+.collapsible:hover{
+    cursor: pointer;
+}
