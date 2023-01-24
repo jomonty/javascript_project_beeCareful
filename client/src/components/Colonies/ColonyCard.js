@@ -1,32 +1,31 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './ColonyCard.css'
 
-const ColonyCard = ({ api_id, colony, deleteColony }) => {
 
-
-    const Navigate = useNavigate()
+const ColonyCard = ({ colony, deleteColony}) => {
 
     const hasInspections = colony.inspections.length > 0;
+    
+    let latestInspectionDate = null;
 
-    const latestInspectionDate = !hasInspections ?
-        null :
-        colony.inspections.map(inspection => {
-            return new Date(inspection.inspectionDate);
-        })
-            .reduce(function (a, b) {
-                return a > b ? a : b;
-            });
-
-    function queenAgeMonths() {
-        const currentTime = Date.now()
-        const ageInMilliseconds = currentTime - Date.parse(colony.queenBirthMonth)
-        return Math.floor(ageInMilliseconds / 2629746000)
+    if (hasInspections) {
+        latestInspectionDate = colony.inspections
+        .map(inspection => new Date(inspection.inspectionDate))
+        .reduce(function (a, b) {
+            return a > b ? a: b;
+        });
     }
 
     const latestInspection = colony.inspections.filter(inspection => {
         const inspectionDate = new Date(inspection.inspectionDate);
         return inspectionDate.getTime() === latestInspectionDate.getTime();
     });
+
+    function queenAgeMonths() {
+        const currentTime = Date.now()
+        const ageInMilliseconds = currentTime - Date.parse(colony.queenBirthMonth)
+        return Math.floor(ageInMilliseconds / 2629746000)
+    }
 
     const handleRemoveClick = () => {
         deleteColony(colony);
@@ -48,8 +47,8 @@ const ColonyCard = ({ api_id, colony, deleteColony }) => {
                     </div>
                     {hasInspections ?
                         <>
-                            {/* <p>Latest Inspection Date: {latestInspection[0].inspectionDate}</p> */}
-                            {/* <p>Hive Health: {latestInspection[0].hiveHealth}</p> */}
+                            <p>Latest Inspection Date: {latestInspection[0].inspectionDate}</p>
+                            <p>Hive Health: {latestInspection[0].hiveHealth}</p>
                         </> :
                         <>
                             <p>No Inspection Data</p>

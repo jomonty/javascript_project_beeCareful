@@ -2,7 +2,7 @@ import {  Link } from 'react-router-dom'
 import './InspectionCard.css'
 
 
-const InspectionCard = ({ api_id, inspection, deleteInspection, selectedColony }) => {
+const InspectionCard = ({ inspection, deleteInspection, selectedColony }) => {
 
     const handleRemoveClick = () => {
         deleteInspection(inspection, selectedColony)
@@ -12,10 +12,12 @@ const InspectionCard = ({ api_id, inspection, deleteInspection, selectedColony }
         <>
         
         <li>
-            <b>Inspection Date: {inspection.inspectionDate} </b><br/>
-                Brood Spotted? {inspection.broodSpotted} <br/>
-                Queen Spotted? {inspection.queenSpotted ? "yes" : "no"} <br/>
-                Honey stores kg {inspection.honeyStores_kg} <br />
+            <p>Inspection Date: {inspection.inspectionDate}</p>
+            <p>Brood Spotted: {inspection.broodSpotted}</p>
+            <p>Queen Spotted: {inspection.queenSpotted ? "Yes" : "No"}</p>
+            <p>Honey Stores (kg): {inspection.honeyStores_kg}</p>
+            <p>Comments: {inspection.comments}</p>
+
             <button onClick={handleRemoveClick}>Remove Inspection</button>
             <Link to={`/colonies/${inspection.parent_id}/inspections/${inspection._id}/edit`} >
                 <button>Edit</button>
