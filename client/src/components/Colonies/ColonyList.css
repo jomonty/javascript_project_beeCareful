@@ -1,5 +1,12 @@
+.colony-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+}
+
 .colony-cards-wrapper {
     display: flex;
     justify-content: center;
     gap: 10rem;
 }
+
