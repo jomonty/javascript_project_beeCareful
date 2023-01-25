@@ -8,7 +8,23 @@
     background-color: black;
     color: white;
     opacity: 0.7;
+
 }
+
+.Collapsible__trigger {
+    text-align: center;
+    font-size: 2.5rem;
+    border: 5px solid #ff9900;
+    border-radius: 1em;
+    box-shadow: -5px 5px 0px 0px #ff9900;
+    margin:4rem;
+    background-color: black;
+    color: white;
+    opacity: 0.7;
+    width:50%;
+    margin-left: 35rem;
+}
+
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
 * {
@@ -118,7 +134,7 @@
   transition: 0.5s;
   padding-bottom: 1rem;
 }
-/* BELOW PADDING AFFECTS EDIT INESPECITON BUTTON */
+
 .container-insp .card-insp .box-insp .content a {
   position: relative;
   /* display: inline-block; */
@@ -138,9 +154,16 @@
   color: #000;
 }
 
+.content-insp > p {
+    font-size: 20px;
+    padding: 2rem;
+    text-align: center;
 
+}
 .single-colony-wrapper {
     display:flex;
     flex-direction: column;
+    align-items: center;
 }
+
 
