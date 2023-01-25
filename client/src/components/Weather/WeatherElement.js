@@ -14,7 +14,7 @@ const WeatherElement = ({ weather }) => {
                 <h3><b>{getDayOfWeek(weather.datetime)}</b></h3>
                 <p>Temperature: {weather.temp}<span>&#8451;</span></p>
                 <p>Wind Speed: {weather.windspeed} mph</p>
-                <img src={`/${weather.icon}.png`} id="weather-icon" />
+                <img src={`/${weather.icon}.png`} id="weather-icon" alt="" />
             </li>
     )
 }

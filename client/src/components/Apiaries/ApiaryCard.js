@@ -1,3 +1,4 @@
+/* eslint-disable */
 import './ApiaryCard.css';
 
 const ApiaryCard = ({ index, apiary, selectedApiary, setSelectedApiary }) => {
@@ -13,7 +14,7 @@ const ApiaryCard = ({ index, apiary, selectedApiary, setSelectedApiary }) => {
                     <div className="content">
 
                         <h3>{apiary.name}</h3>
-                        <p>Address: {apiary.address}</p>
+                        <p>Address: {apiary.address}</p>                        
                         <button onClick={handleClick}><a href="#">Select</a></button>
                     </div>
                 </div>

@@ -1,7 +1,6 @@
 import './WeatherGridColony.css'
-import ReactDOM from 'react-dom'
-  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-  import { faCheck,faXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck,faXmark } from '@fortawesome/free-solid-svg-icons'
   
 
 
@@ -16,7 +15,6 @@ const WeatherGridColony = ({ weather }) => {
 
     const weatherColonyNodes = weather.map((weather, index) => {
 
-        const iconToUse = weather.temp >= 5 ? faCheck : faXmark
 
 
         return (

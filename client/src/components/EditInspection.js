@@ -31,7 +31,7 @@ const EditInspection = ({ apiaryData, editInspection }) =>{
             .at(0)
             setInsUpdate(ins);
         }
-    }, [apiaryData]);
+    }, [apiaryData, col_id, ins_id]);
 
     const handleInspectionDateChange = (event) => {
         const copyInsUpdate = {...insUpdate};

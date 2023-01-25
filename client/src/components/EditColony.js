@@ -22,13 +22,7 @@ const EditColony = ({ apiaryData, editColony}) => {
         queenName: "",
         queenBirthMonth: ""
     });
-
-    const [name,setName] = useState("")
-    const [queenName,setQueenName] = useState("")
-    const [queenBirthMonth, setQueenBirthMonth] = useState("");
     
-
-
     useEffect(() => {
         if (apiaryData) {
             const col = apiaryData.colonies
@@ -36,7 +30,7 @@ const EditColony = ({ apiaryData, editColony}) => {
             .at(0);
             setColUpdate(col);
         }
-    }, [apiaryData])
+    }, [apiaryData, col_id])
 
     const handleNameChange = (event) => {
         const copyColUpdate = {...colUpdate};
