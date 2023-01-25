@@ -118,7 +118,7 @@
   transition: 0.5s;
   padding-bottom: 1rem;
 }
-/* BELOW PADDING AFFECTS EDIT INESPECITON BUTTON */
+
 .container-insp .card-insp .box-insp .content a {
   position: relative;
   /* display: inline-block; */
@@ -138,9 +138,15 @@
   color: #000;
 }
 
+.content-insp > p {
+    font-size: 20px;
+    padding: 2rem;
+    text-align: center;
 
+}
 .single-colony-wrapper {
     display:flex;
     flex-direction: column;
+    align-items: center;
 }
 
