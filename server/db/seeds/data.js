@@ -113,7 +113,7 @@ const inspectionsSeed = [
     broodSpotted: "No",
     honeyStores_kg: "0",
     hiveHealth: "poor",
-    comments: "None",
+    comments: "Testy Comment 1",
     colonyName: "West Ckeya"
   },
   {
@@ -123,7 +123,7 @@ const inspectionsSeed = [
     broodSpotted: "No",
     honeyStores_kg: "5",
     hiveHealth: "ok",
-    comments: "None",
+    comments: "Testy Comment 2",
     colonyName: "West Ckeya"
   },
   {
@@ -133,37 +133,37 @@ const inspectionsSeed = [
     broodSpotted: "No",
     honeyStores_kg: "10",
     hiveHealth: "good",
-    comments: "None",
+    comments: "Testy Comment 3",
     colonyName: "West Ckeya"
   },
   {
     parent_id: null,
-    inspectionDate: "2021-05-12",
+    inspectionDate: "2021-04-08",
     queenSpotted: false,
     broodSpotted: "No",
     honeyStores_kg: "0",
     hiveHealth: "poor",
-    comments: "None",
+    comments: "Testy Comment 1",
     colonyName: "Stallmoorfa"
   },
   {
     parent_id: null,
-    inspectionDate: "2021-12-12",
+    inspectionDate: "2021-10-23",
     queenSpotted: true,
     broodSpotted: "No",
     honeyStores_kg: "5",
     hiveHealth: "ok",
-    comments: "None",
+    comments: "Testy Comment 2",
     colonyName: "Stallmoorfa"
   },
   {
     parent_id: null,
-    inspectionDate: "2022-05-12",
+    inspectionDate: "2022-08-13",
     queenSpotted: true,
     broodSpotted: "No",
     honeyStores_kg: "10",
     hiveHealth: "good",
-    comments: "None",
+    comments: "Testy Comment 3",
     colonyName: "Stallmoorfa"
   }
 ];
