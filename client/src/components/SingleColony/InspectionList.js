@@ -23,7 +23,7 @@ const InspectionList = ({apiaryData, selectedColony, weather, addInspection, del
             <div className="inspection-cards-wrapper">
                 {inspectionNodes}
                 </div>
-            <h3>Add New Inspection</h3>
+            <h3 id="add-insp-title">Add New Inspection</h3>
             <NewInspectionForm 
                 addInspection={addInspection} 
                 apiary_id={apiaryData._id}
