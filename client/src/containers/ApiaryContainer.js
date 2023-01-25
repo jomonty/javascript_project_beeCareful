@@ -21,7 +21,7 @@ const ApiaryContainer = () => {
 	const [weather,setWeather] = useState([])
     
 	useEffect(() => {
-		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g64%204bu?unitGroup=uk&key=Q9GKPJ25W25C3H7UHVBDCKSHW&contentType=json")
+		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g64%204bu?unitGroup=uk&key=5UF9XV3Y9DGQHKLMW9XSPL9R5&contentType=json")
 			.then(res => {
                 if (res.status === 200) {
                     return res.json();
