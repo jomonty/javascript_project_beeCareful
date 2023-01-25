@@ -51,6 +51,14 @@
         background: linear-gradient(315deg, #ff0000b0, #fbae1f);
         box-shadow:  5px 5px 10px #4a4949,
                      -5px -5px 10px #111111; 
-        margin-bottom: 2rem;
         opacity: 0.7;
+        margin-bottom: 2rem;
+        }
+
+        .weather-colony-forecast-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-right: 3rem;
+            margin-left: 2rem;
         }

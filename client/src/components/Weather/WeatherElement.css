@@ -8,6 +8,7 @@ border-radius: 44% 56% 50% 50% / 30% 11% 89% 70%;
 background: linear-gradient(315deg, #ffbf00, #FBCA1F);
 box-shadow:  5px 5px 10px #4a4949,
              -5px -5px 10px #111111; 
+margin-bottom: 2rem;
 }
 
 .weather-forecast-tile:hover {

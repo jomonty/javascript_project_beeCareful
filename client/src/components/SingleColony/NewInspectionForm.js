@@ -65,8 +65,8 @@ const NewInspectionForm = ({ addInspection, apiary_id, colony_id }) => {
     }
 
     return (
-        <form className='form-wrapper'>
-           <div className='input-wrapper'>
+        <form className='form-wrapper-insp'>
+           <div className='input-wrapper-insp'>
 
             <label htmlFor="ins-date">Inspection Date: </label>
             <input 

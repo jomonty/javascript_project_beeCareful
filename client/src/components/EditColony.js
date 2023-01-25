@@ -86,7 +86,7 @@ const EditColony = ({ apiaryData, editColony}) => {
                 name="queenName" 
                 onChange={handleQueenNameChange}
             />
-
+            <label>Queen's DOB:</label>
             <input 
                 type="date" 
                 value={colUpdate.queenBirthMonth} 
@@ -94,11 +94,11 @@ const EditColony = ({ apiaryData, editColony}) => {
                 onChange={handleQueenBirthMonthChange} 
                 // onFocus={(e) => (e.target.type = "date")}
             />
-
-            </div>
-            <button type="submit" onClick={handleSubmit} className="btn-add-colony">
+                  <button type="submit" onClick={handleSubmit} className="btn-add-colony">
                 Confirm
             </button>
+            </div>
+      
         </form>
     )
 }

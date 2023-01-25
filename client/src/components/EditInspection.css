@@ -1,15 +1,4 @@
-#queen-spotted, #brood-spotted, #hive-health {
-    background-color: #ff8a05;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    border: solid 3px black;
-    cursor: pointer;
-    opacity: 0.8;
-}
-
-
-.input-wrapper-insp input {
+.input-wrapper-insp4 input {
     background-color: #eee;
     border: none;
     padding: .5rem;
@@ -21,18 +10,18 @@
     cursor: pointer;
    }
    
-   .input-wrapper-insp input:focus {
+   .input-wrapper-insp4 input:focus {
     outline-color: rgb(255, 213, 0);
    }
    
-   .input-wrapper-insp {
+   .input-wrapper-insp4 {
     display: flex;
     align-items: center;
     width: 85%;
     gap:.7rem;
    }
 
-   .form-wrapper-insp {
+   .form-wrapper-insp4 {
     display: flex;
     gap:0.7rem;
     justify-content: center;

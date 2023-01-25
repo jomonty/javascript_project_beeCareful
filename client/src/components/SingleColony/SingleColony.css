@@ -1,4 +1,4 @@
-#colony-weather-title, #colony-inspection-title {
+#colony-weather-title, #colony-inspection-title, #add-insp-title {
     text-align: center;
     font-size: 2.5rem;
     border: 5px solid #ff9900;
@@ -8,7 +8,6 @@
     background-color: black;
     color: white;
     opacity: 0.7;
-
 }
 
 .Collapsible__trigger {
@@ -22,7 +21,11 @@
     color: white;
     opacity: 0.7;
     width:50%;
-    margin-left: 35rem;
+    margin-left: 36rem;
+}
+
+.Collapsible__trigger:hover {
+  cursor: pointer;
 }
 
 
