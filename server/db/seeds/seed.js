@@ -24,11 +24,13 @@ async function seed() {
     const colonies = db.collection('colonies');
     await colonies.deleteMany({});
     // Assign ObjectID for selected apiaryName in coloniesSeed
-    const coloniesWithIDs = coloniesSeed.map(colony => {
-      const selectedApiary = insertedApiaries.filter(apiary => {
-        return apiary.name === colony.apiaryName;
-      })
-      colony.parent_id = selectedApiary[0]._id;
+    const coloniesWithIDs = coloniesSeed
+      .map(colony => {
+        const selectedApiary = insertedApiaries.filter(apiary => {
+          return apiary.name === colony.apiaryName;
+        })
+      .at(0)
+      colony.parent_id = selectedApiary._id;
       delete colony.apiaryName;
       return colony;
     })
@@ -43,10 +45,12 @@ async function seed() {
 
     // Assign ObjectID for selected colonyName in inspectionsSeed
     const inspectionsWithIDs = inspectionsSeed.map(inspection => {
-      const selectedColony = insertedColonies.filter(colony => {
+      const selectedColony = insertedColonies
+      .filter(colony => {
         return colony.name === inspection.colonyName;
       })
-      inspection.parent_id = selectedColony[0]._id;
+      .at(0)
+      inspection.parent_id = selectedColony._id;
       delete inspection.colonyName;
       return inspection;
     })

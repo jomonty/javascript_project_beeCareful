@@ -11,16 +11,20 @@ const NavBar = ({ apiaryData }) => {
     };
     
     return (
-        <div className="header">
+        <div className="header-wrapper">
             <img src={logo} id="logo" alt=""/>
-            <h3>{apiaryData.name}</h3>
             <ul className="navbar">
+                <li>
+                    <Link to="/"><button id="btn-navbar-selected">Currently Viewing: {apiaryData.name}</button></Link>
+                </li>
+                <div className="apiaries-colonies-nav">
                 <li>
                     <Link to="/"><button id="btn-navbar">Apiaries</button></Link>
                 </li>
                 <li>
                     <Link to="/colonies"><button id="btn-navbar">Colonies</button></Link>
                 </li>
+                </div>
             </ul>
         </div>
     );

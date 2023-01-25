@@ -1,8 +1,8 @@
-.header {
+.header-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
+    gap: 10rem;
 
 }
 
@@ -10,7 +10,7 @@
 .navbar {
     display: flex;
     list-style-type: none;
-    gap:6rem;
+    gap:3rem;
     font-size: 1.5rem;
     margin-right: 3rem;
 }
@@ -36,4 +36,34 @@ a {
   
   #btn-navbar:hover {
     transform: translate(5px, -5px);
+  }
+
+
+  #btn-navbar-selected {
+    font-size: 1.1rem;
+    padding: 0.8em 2em;
+    margin-right: 14rem;
+    margin-left:8rem;
+    height: 5rem;
+    background-color: #000;
+    border: 3px solid #ff5e00;
+    border-radius: 1em;
+    color: rgb(195, 247, 6);
+    font-weight: bolder;
+    transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s;
+    box-shadow: -5px 5px 0px 0px #ffbf00;
+    cursor: pointer;
+    opacity: .9;
+
+  }
+  
+  #btn-navbar-selected:hover {
+    transform: translate(5px, -5px);
+  }
+
+
+  .apiaries-colonies-nav {
+    display: flex;
+    gap: 2rem;
+   
   }
