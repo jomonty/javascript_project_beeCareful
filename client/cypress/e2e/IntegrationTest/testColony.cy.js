@@ -60,12 +60,12 @@ describe('Testing Colonies', () => {
     })
 
     it('should be able to see the datail of the colony', () => {
-        cy.get(':nth-child(1) > .flip-card-inner > .flip-card-front > .title').should('contain', 'West Ckeya')
-        cy.get(':nth-child(1) > .flip-card-inner > .flip-card-back > #colony-card-txt').should('contain', 'Brenda')
+        cy.get(':nth-child(1) > .flip-card-inner > .flip-card-front > .title').should('contain', 'Stallmoorfa')
+        cy.get(':nth-child(1) > .flip-card-inner > .flip-card-back > #colony-card-txt').should('contain', 'Liz')
 
         cy.get("button").contains('See details').click({force: true})
 
-        cy.get('.single-colony-card').should('contain', 'Colony Name:').and('contain', 'Queen Birth Month:').and('contain', 'Queen Name:')
+        cy.get('.box-insp').should('contain', 'Colony Name:').and('contain', 'Queen Birth Month:').and('contain', 'Queen Name:')
 
         
     })
@@ -92,8 +92,8 @@ describe('Testing Colonies', () => {
     })
 
     it('should be able to edit the details of the colony', () => {
-        cy.get(':nth-child(1) > .flip-card-inner > .flip-card-front > .title').should('contain', 'West Ckeya')
-        cy.get(':nth-child(1) > .flip-card-inner > .flip-card-back > #colony-card-txt').should('contain', 'Brenda')
+        cy.get(':nth-child(1) > .flip-card-inner > .flip-card-front > .title').should('contain', 'Stallmoorfa')
+        cy.get(':nth-child(1) > .flip-card-inner > .flip-card-back > #colony-card-txt').should('contain', 'Liz')
 
         cy.get('.btn-add-colony').contains('Edit').click({force: true})
         cy.get('[name="name"]').should('be.empty')
