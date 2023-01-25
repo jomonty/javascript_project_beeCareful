@@ -10,8 +10,8 @@ describe('Testing Inspections', () => {
     })
 
     it('should be able to see the inspections after pressing the show button in detail page if have any', () => {
-        cy.get('.Collapsible').click({force: true})
-        cy.get(':nth-child(1) > .card').should('be.visible')
+        cy.get('🔎 View Inspections 🔍').click({force: true})
+        cy.get(':nth-child(1) > .card > .box').should('be.visible')
 
     })
 })
