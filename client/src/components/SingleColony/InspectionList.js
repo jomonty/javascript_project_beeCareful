@@ -20,10 +20,9 @@ const InspectionList = ({apiaryData, selectedColony, weather, addInspection, del
 
     return (
         <>
-
-            <ul>
+            <div className="inspection-cards-wrapper">
                 {inspectionNodes}
-            </ul>
+                </div>
             <h3>Add New Inspection</h3>
             <NewInspectionForm 
                 addInspection={addInspection} 
