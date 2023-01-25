@@ -100,3 +100,8 @@
     padding-bottom: 2.5rem;
 }
 
+.colony-card-buttons {
+    display: flex;
+    justify-content: center;
+    gap:1rem;
+}

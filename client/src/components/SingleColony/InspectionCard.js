@@ -9,25 +9,28 @@ const InspectionCard = ({ inspection, deleteInspection, selectedColony }) => {
     }
 
     return (
-        
-            <li>
-                <p>Inspection Date: {inspection.inspectionDate}</p>
+   
+
+            <div className="container">
+            <div className="card">
+                <div className="box">
+                    <div className="content">
+                    <p>Inspection Date: {inspection.inspectionDate}</p>
                 <p>Brood Spotted: {inspection.broodSpotted}</p>
                 <p>Queen Spotted: {inspection.queenSpotted ? "Yes" : "No"}</p>
                 <p>Honey Stores (kg): {inspection.honeyStores_kg}</p>
-                <p>Comments: {inspection.comments}</p>
+                <p>Hive health: {inspection.hiveHealth}</p>
+                <button onClick={handleRemoveClick} className="btn-add-colony">Remove Inspection</button>
+                <Link to={`/colonies/${inspection.parent_id}/inspections/${inspection._id}/edit`} id="edit-btn-link" >
+                    <button className="btn-edit-insp">Edit</button></Link>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                <button onClick={handleRemoveClick}>Remove Inspection</button>
-                <Link to={`/colonies/${inspection.parent_id}/inspections/${inspection._id}/edit`} >
-                    <button>Edit</button>
-                </Link>
+            )
 
-            </li>
-    )
 }
 
 export default InspectionCard;
-
-
-
 
