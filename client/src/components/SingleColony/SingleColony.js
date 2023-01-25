@@ -32,7 +32,6 @@ const SingleColony = ({apiaryData, weather, addInspection, updateInspection, del
             </div>
         </div>
             <Collapsible trigger="&#128270; View Inspections &#128269;">
-                {/* <h3 id="colony-inspection-title">Inspections:</h3> */}
                 <InspectionList 
                     apiaryData={apiaryData} 
                     selectedColony={col_id} 
