@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import InspectionList from './InspectionList';
 import WeatherGridColony from '../Weather/WeatherGridColony';
 import './SingleColony.css'
-import Collapsble from 'react-collapsible'
+import Collapsible from 'react-collapsible'
 
 const SingleColony = ({apiaryData, weather, addInspection, updateInspection, deleteInspection, editInspection}) => {
 
@@ -20,25 +20,27 @@ const SingleColony = ({apiaryData, weather, addInspection, updateInspection, del
     
     return (
         <div>
-            <ul>
+            <div className='colony-inspections-wrapper'>
+            <ul className='single-colony-card'>
                 <li>
                     Colony Name: {identifiedColony.name} <br/>
                     Queen Birth Month: {identifiedColony.queenBirthMonth} <br/>
                     Queen Name: {identifiedColony.queenName} <br/>
                 </li>
             </ul>
-            <Collapsble trigger="&#128270; View Inspections &#128269;" className='collapsible'>
-            <h3>Inspections:</h3>
-            <InspectionList 
-                apiaryData={apiaryData} 
-                selectedColony={col_id} 
-                addInspection={addInspection}
-                updateInspection={updateInspection}
-                deleteInspection={deleteInspection}
-                editInspection={editInspection}
-            />
-            </Collapsble>
-            <h3>Weather Forecast</h3>
+            <Collapsible trigger="&#128270; View Inspections &#128269;" className="btn-add-colony">
+                <h3>Inspections:</h3>
+                <InspectionList 
+                    apiaryData={apiaryData} 
+                    selectedColony={col_id} 
+                    addInspection={addInspection}
+                    updateInspection={updateInspection}
+                    deleteInspection={deleteInspection}
+                    editInspection={editInspection}
+                />
+            </Collapsible>
+            </div>
+            <h3 id="colony-weather-title">Inspection Weather Assesment:</h3>
             <WeatherGridColony weather={weather} />
         </div>
     )

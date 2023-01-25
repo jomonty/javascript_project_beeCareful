@@ -1,7 +1,7 @@
 .flip-card {
     background-color: transparent;
-    width: 190px;
-    height: 290px;
+    width: 360px;
+    height: 390px;
     perspective: 1000px;
     font-family: sans-serif;
 }
@@ -43,26 +43,29 @@
 }
 
 .flip-card-front {
-    background: linear-gradient(120deg, bisque 60%, rgb(255, 231, 222) 88%,
-            rgb(255, 211, 195) 40%, rgba(242, 81, 0, 0.673) 48%);
-    color: coral;
+    background: linear-gradient(120deg, rgba(241, 127, 13, 0.586) 60%, rgb(237, 152, 77) 88%,
+            rgb(245, 138, 111) 40%, rgba(242, 81, 0, 0.29) 48%);
+    /* background: linear-gradient(120deg, rgba(241, 127, 13, 0.586) 60%, rgb(255, 231, 222) 88%,
+            rgb(255, 211, 195) 40%, rgba(242, 81, 0, 0.29) 48%); */
+    color: white;
     font-weight: bold;
     font-size: 1.3rem;
 }
 
+
+
+
 .flip-card-back {
     background: linear-gradient(120deg, rgb(255, 174, 145) 30%, #ff860d 88%,
-            rgb(236, 149, 8) 40%, rgb(236, 149, 8) 78%);
+            rgb(236, 149, 8) 40%, rgba(236, 149, 8, 0.26) 78%);
     color: white;
     font-weight: bold;
     transform: rotateY(180deg);
+    opacity: 0.8;
 }
 
-.colony-card-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
+
+
 
 .btn-colony-card {
     font-weight: bold;
@@ -93,4 +96,7 @@
 #colony-card-txt {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-size: 1.2rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
 }
+
