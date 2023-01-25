@@ -1,64 +1,86 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { useNavigate, useParams } from "react-router-dom"
 
-const EditInspection = ({inspection, updateInspection, selectedColony}) =>{
+const EditInspection = ({ apiaryData, editInspection }) =>{
 
-    const Navigate = useNavigate()
+    const Navigate = useNavigate();
+    const { col_id, ins_id } = useParams();
 
-    const [date,setDate] = useState("")
-    const [queenSpotted,setQueenSpotted] = useState("")
-    const [broodSpotted,setBroodSpotted] = useState("")
-    const [honey,setHoney] = useState("")
-    const [hiveHealth,setHiveHealth] = useState("")
-    const [comments,setComments] = useState("")
+    const emptyInspection = {
+        _id: "",
+        parent_id: "",
+        inspectionDate: "",
+        queenSpotted: false,
+        broodSpotted: "No",
+        honeyStores_kg: 0,
+        hiveHealth: "",
+        comments: ""
+    };
 
-    const handleDateChange = (event) => {
-        setDate(event.target.value)
+    const [insUpdate, setInsUpdate] = useState({...emptyInspection});
+
+    useEffect(() => {
+        if (apiaryData) {
+            const colony = apiaryData.colonies
+            .filter(colony => colony._id === col_id)
+            .at(0)
+            const col_index = apiaryData.colonies.indexOf(colony);
+            const ins = apiaryData.colonies[col_index].inspections
+            .filter(ins => ins._id === ins_id)
+            .at(0)
+            setInsUpdate(ins);
+        }
+    }, [apiaryData]);
+
+    const handleInspectionDateChange = (event) => {
+        const copyInsUpdate = {...insUpdate};
+        copyInsUpdate.inspectionDate = `${event.target.value}`;
+        setInsUpdate(copyInsUpdate);
     }
 
     const handleQueenSpotted = (event) => {
-        setQueenSpotted(event.target.value)
+        const copyInsUpdate = {...insUpdate};
+        if (event.target.value === "true") {
+            copyInsUpdate.queenSpotted = true;
+        } else {
+            copyInsUpdate.queenSpotted = false;
+        }
+        setInsUpdate(copyInsUpdate);
     }
 
     const handleBroodSpotted = (event) => {
-        setBroodSpotted(event.target.value)
+        const copyInsUpdate = {...insUpdate};
+        copyInsUpdate.broodSpotted = event.target.value;
+        setInsUpdate(copyInsUpdate);
     }
 
     const handleHoney = (event) => {
-        setHoney(event.target.value)
+        const copyInsUpdate = {...insUpdate};
+        copyInsUpdate.honeyStores_kg = event.target.value;
+        setInsUpdate(copyInsUpdate);
     }
 
     const handleHiveHealth = (event) => {
-        setHiveHealth(event.target.value)
+        const copyInsUpdate = {...insUpdate};
+        copyInsUpdate.hiveHealth = event.target.value;
+        setInsUpdate(copyInsUpdate);
     }
 
     const handleComment = (event) => {
-        setComments(event.target.value)
+        const copyInsUpdate = {...insUpdate};
+        copyInsUpdate.comments = event.target.value;
+        setInsUpdate(copyInsUpdate);
     }
 
     const resetForm = () => {
-        setDate('')
-        setQueenSpotted('')
-        setBroodSpotted('')
-        setHoney('')
-        setHiveHealth('')
-        setComments('')
+        setInsUpdate({...emptyInspection});
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const payload = {
-            inspectionDate: date,
-            queenSpotted: queenSpotted,
-            broodSpotted: broodSpotted,
-            honeyStores_kg: honey,
-            hiveHealth: hiveHealth,
-            comments: comments
-        }
-
-        updateInspection(payload, selectedColony)
-        Navigate('/colonies')
+        editInspection(apiaryData._id, col_id, insUpdate);
         resetForm();
+        Navigate(`/colonies/${col_id}`);
     }
 
 
@@ -67,19 +89,70 @@ const EditInspection = ({inspection, updateInspection, selectedColony}) =>{
     return (
         <form className="form-wrapper">
             <div className="input-wrapper">
-            <label>Inspection Date: </label><input type="date" value={date} placeholder={inspection.inspectionDate} name="name" onChange={handleDateChange}/>
-            <input type="text" value={queenSpotted} placeholder={inspection.queenSpotted} name="queenSpotted" onChange={handleQueenSpotted}/>
-            <label>Brood spotted?</label><select value={broodSpotted} placeholder={inspection.broodSpotted} name="broodSpotted" onChange={handleBroodSpotted}>
-                <option value="normal">Normal</option>
-                <option value="compact">Compact</option>
-                <option value="spotty">Spotty</option>
-                <option value="No">No</option>
-            </select>
-            <input type="text" value={honey} placeholder={inspection.honeyStores_kg} name="honey" onChange={handleHoney}/>
-            <input type="text" value={hiveHealth} placeholder={inspection.hiveHealth} name="hiveHealth" onChange={handleHiveHealth}/>
-            <input type="text" value={comments} placeholder={inspection.comments} name="comments" onChange={handleComment}/>
+                <label htmlFor="ins-date">Inspection Date: </label>
+                <input
+                    id="ins-date"
+                    type="date" 
+                    value={insUpdate.inspectionDate} 
+                    name="inspection-date" 
+                    onChange={handleInspectionDateChange}
+                />
+                
+                <label htmlFor="queen-spotted">Queen Spotted?</label>
+                <select
+                    id="queen-spotted"
+                    value={insUpdate.queenSpotted}
+                    name="queenSpotted"
+                    onChange={handleQueenSpotted}
+                >
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                
+                <label htmlFor="brood-spotted">Brood Spotted?</label>
+                <select
+                    id="brood-spotted"
+                    value={insUpdate.broodSpotted} 
+                    name="broodSpotted" 
+                    onChange={handleBroodSpotted}
+                >
+                    <option value="normal">Normal</option>
+                    <option value="compact">Compact</option>
+                    <option value="spotty">Spotty</option>
+                    <option value="No">No</option>
+                </select>
+                
+                <label htmlFor="honey-stores">Honey Stores (kg)</label>
+                <input
+                    id="honey-stores"
+                    type="number" 
+                    value={insUpdate.honeyStores_kg} 
+                    name="honey" 
+                    onChange={handleHoney}
+                />
+                
+                <label htmlFor="hive-health">Hive Health</label>
+                <select
+                    id="hive-health"
+                    value={insUpdate.hiveHealth}
+                    name="hiveHealth"
+                    onChange={handleHiveHealth}
+                >
+                    <option value="good">Good</option>
+                    <option value="ok">Ok</option>
+                    <option value="poor">Poor</option>
+                </select>
+
+                <input 
+                    type="text" 
+                    value={insUpdate.comments} 
+                    name="comments" 
+                    onChange={handleComment}
+                />
             </div>
-            <button type="submit" onClick={handleSubmit} className="btn-add-colony">Edit Inspection</button>
+            <button type="submit" onClick={handleSubmit} className="btn-add-colony">
+                Confirm
+            </button>
         </form>
     )
 }

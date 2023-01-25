@@ -1,162 +1,132 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import NavBar from '../components/NavBar';
 import ApiaryList from '../components/Apiaries/ApiaryList';
 import ColonyList from '../components/Colonies/ColonyList';
+import SingleColony from '../components/SingleColony/SingleColony';
 import EditColony from '../components/EditColony';
 import EditInspection from '../components/EditInspection';
 
-import NavBar from '../components/NavBar';
-import InspectionList from "../components/SingleColony/InspectionList"
 import BeeServices from '../services/BeeService';
-import SingleColony from '../components/SingleColony/SingleColony';
+import * as helpers from '../services/helpers';
 
 import './ApiaryContainer.css'
 
 const ApiaryContainer = () => {
 
     const [apiaryData,setApiaryData] = useState([]);
-
     const [selectedApiary, setSelectedApiary] = useState(0);
-
 	const [weather,setWeather] = useState([])
-
-    const [colonyData,setColonyData] = useState()
-
-    const [inspection, setInspection] = useState()
-
     
 	useEffect(() => {
-		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g64%204bu?unitGroup=uk&key=Q86C2HV4D2FX4MKNCXF235DBE&contentType=json")
+		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g64%204bu?unitGroup=uk&key=Q9GKPJ25W25C3H7UHVBDCKSHW&contentType=json")
 			.then(res => res.json())
 			.then(weatherData => {
                 setWeather(weatherData.days.slice(0,5))})
-            }, [])
+    }, []);
 
     useEffect(() => {
         BeeServices.getApiaries()
         .then(apiaryDataRaw => {
             setApiaryData(apiaryDataRaw);
         })
-    }, [])
+    }, []);
 
-    if (apiaryData === []) {
+    if (!apiaryData) {
         return (
             <h3>Loading...</h3>
         )
-    }
+    };
 
+    // Functions to add colonies to db, and effect changes to state.
     const addColony = (payload) => {
         BeeServices.addColonies(apiaryData[selectedApiary]._id,payload)
         .then(res => {
             const temp = [...apiaryData];
-            temp[selectedApiary].colonies.push(res);
+            const updatedApiary = helpers.addColonyToState(temp[selectedApiary], res);
+            temp[selectedApiary] = updatedApiary
             setApiaryData(temp);
         })
-    }
+    };
 
-    const editColony = (colony) =>{
-        setColonyData(colony)
-    }
-
-    const updateColony = (payload) => {
-        const elementToChange = ['name', 'queenName', "queenBirthMonth"]
-        const object = {}
-        elementToChange.forEach(element => {
-            object[element] = payload[element]
+    const editColony = (apiary_id, colony_id, colony) => {
+        BeeServices.updateColonies(apiary_id, colony_id, colony)
+        .then(res => {
+            const temp = [...apiaryData];
+            const updatedApiary = helpers.editColonyInState(temp[selectedApiary], res)
+            temp[selectedApiary] = updatedApiary;
+            setApiaryData(temp);
         })
-        console.log(object)
-        const newColony = Object.assign(colonyData, object)
-        BeeServices.updateColonies(apiaryData[selectedApiary]._id, colonyData._id, newColony)
-        
-        
-    }
+    };
     
     const deleteColony = (colony) => {
         BeeServices.deleteColonies(apiaryData[selectedApiary]._id, colony._id)
         .then(res => {
             if (res.status === 200) {
                 const temp = [...apiaryData];
-                const index = temp[selectedApiary].colonies.indexOf(colony);
-                temp[selectedApiary].colonies.splice(index, 1);
+                const updatedApiary = helpers.deleteColonyFromState(temp[selectedApiary], colony);
+                temp[selectedApiary] = updatedApiary;
                 setApiaryData(temp);
             }
         })
-    }
+    };
 
+    // Functions to add inspections to db and effect changes to state
 	const addInspection = (apiary_id, colony_id, inspection) => {
         BeeServices.addInspection(apiary_id, colony_id, inspection)
         .then(res => {
-            console.log(res);
                 const temp = [...apiaryData];
-                const colony = temp[selectedApiary].colonies.filter(colony => {
-                    console.log(colony._id);
-                    console.log(colony_id);
-                    return colony._id === colony_id;
-                })[0]
-                console.log(colony);
-                const col_index = temp[selectedApiary].colonies.indexOf(colony);
-                console.log(col_index);
-                console.log(res);
-                temp[selectedApiary].colonies[col_index].inspections.push(res);
-                console.log(temp[selectedApiary].colonies[col_index]);
-                console.log(res);
+                const updatedApiary = helpers.addInspectionToState(temp[selectedApiary], res);
+                temp[selectedApiary] = updatedApiary;
                 setApiaryData(temp);
             })
-    }
+    };
 
-    const editInspection = (Inspection, selectedColony) => {
-        setInspection(Inspection)
-        setColonyData(selectedColony)
-        console.log(selectedColony)
-    }
-
-    const updateInspection = (payload, colonyData) => {
-        const elementToChange = ['inspectionDate', 'queenSpotted', "broodSpotted", "honeyStores_kg", "hiveHealth", "comments"]
-        const object = {}
-        elementToChange.forEach(element => {
-            object[element] = payload[element]
+    const editInspection = (api_id, col_id, inspection) => {
+        BeeServices.updateInspection(api_id, col_id, inspection)
+        .then(res => {
+            const temp = [...apiaryData];
+            const updatedApiary = helpers.updateInspectionInState(temp[selectedApiary], res);
+            temp[selectedApiary] = updatedApiary;
+            setApiaryData(temp);
         })
-        const newInspection = Object.assign(inspection, object)
-        console.log('123')
-        console.log(colonyData)
-        console.log(inspection._id)
-        console.log('123')
-        BeeServices.updateInspection(apiaryData[selectedApiary]._id, colonyData, newInspection)
-        
-        
-    }
+    };
 
     const deleteInspection = (inspection, selectedColony) => {
         BeeServices.deleteInspection(apiaryData[selectedApiary]._id, selectedColony, inspection._id)
         .then(res => {
             if (res.status === 200) {
                 const temp = [...apiaryData];
-                const colony = temp[selectedApiary].colonies.find(element => element._id === selectedColony);
-                const colonyIndex = temp[selectedApiary].colonies.indexOf(colony)
-                const inspectionIndex =  temp[selectedApiary].colonies[colonyIndex]['inspections'].indexOf(inspection)
-                temp[selectedApiary].colonies[colonyIndex]['inspections'].splice(inspectionIndex, 1);
+                const updatedApiary = helpers.deleteInspectionFromState(temp[selectedApiary], inspection);
+                temp[selectedApiary] = updatedApiary;
                 setApiaryData(temp);
             }
         })
-    }
-
-    
-
+    };
 
     return (
         
         <Router>
-            <NavBar /> 
+            <NavBar 
+                apiaryData={apiaryData[selectedApiary]} 
+            /> 
             <Routes>
-                <Route path="/" element={<ApiaryList />}/>
+                <Route 
+                    path="/" 
+                    element={   <ApiaryList
+                                    apiaryData={apiaryData}
+                                    selectedApiary={selectedApiary}
+                                    setSelectedApiary={setSelectedApiary}
+                                />
+                            }
+                />
                 <Route
                     path="/colonies"
                     element={ <ColonyList 
                                     apiaryData={apiaryData[selectedApiary]} 
                                     weather={weather}
                                     addColony={addColony}
-                                    updateColony={updateColony}
                                     deleteColony={deleteColony}
                                     editColony={editColony}
                                 />
@@ -173,9 +143,22 @@ const ApiaryContainer = () => {
                                 /> 
                             } 
                 />
-                <Route path="/inspections" element={ <InspectionList addInspection={addInspection} apiaryData={apiaryData} editInspection={editInspection} deleteInspection={deleteInspection}/> } />
-                <Route path="/colony/edit" element={ <EditColony colonyData={colonyData} updateColony={updateColony}/> } />
-                <Route path="/inspection/edit" element={ <EditInspection inspection={inspection} updateInspection={updateInspection} selectedColony={colonyData}/>} />
+                <Route 
+                    path="/colonies/:col_id/edit" 
+                    element={ <EditColony 
+                                    apiaryData={apiaryData[selectedApiary]} 
+                                    editColony={editColony}
+                                /> 
+                            } 
+                />
+                <Route 
+                    path="/colonies/:col_id/inspections/:ins_id/edit" 
+                    element={ <EditInspection 
+                                    apiaryData={apiaryData[selectedApiary]} 
+                                    editInspection={editInspection} 
+                                />
+                            } 
+                />
             </Routes>
         </Router>
     )
