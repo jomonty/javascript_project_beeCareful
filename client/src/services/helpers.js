@@ -92,7 +92,6 @@ const Helpers = {
         // Get IDs and objects
         const updatedApiary = singleApiary;
         const col_id = inspection.parent_id;
-        const ins_id = inspection._id;
 
         // Find colony
         const colony = updatedApiary.colonies

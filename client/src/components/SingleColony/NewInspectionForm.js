@@ -4,7 +4,7 @@ import './NewInspectionForm.css'
 const NewInspectionForm = ({ addInspection, apiary_id, colony_id }) => {
 
     const emptyInspection = {
-        inspectionDate: "",
+        inspectionDate: new Date().toJSON().slice(0,10),
         queenSpotted: false,
         broodSpotted: "No",
         honeyStores_kg: 0,
