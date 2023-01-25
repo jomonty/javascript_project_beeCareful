@@ -105,7 +105,7 @@
   transition: 0.5s;
   padding-bottom: 1rem;
 }
-
+/* BELOW PADDING AFFECTS EDIT INESPECITON BUTTON */
 .container .card .box .content a {
   position: relative;
   /* display: inline-block; */
