@@ -31,7 +31,7 @@ describe('Testing Colonies', () => {
 
     it('should be able to add colony', () => {
         cy.get('.colony-cards-wrapper').children().should('have.length', 3)
-        cy.get('.form-wrapper > .btn-add-colony').click()
+        cy.get('.input-wrapper > .btn-add-colony').click()
         cy.get('.colony-cards-wrapper').children().should('have.length', 4)
     })
 
@@ -45,7 +45,7 @@ describe('Testing Colonies', () => {
         cy.get('.colony-cards-wrapper').children().should('have.length', 3)
         cy.get('.input').type("test").wait(500)
         cy.get('[name="queenName"]').type("test").wait(500)
-        cy.get('.form-wrapper > .btn-add-colony').click()
+        cy.get('.input-wrapper > .btn-add-colony').click()
         cy.get(':nth-child(4) > .flip-card-inner > .flip-card-front > .title').should('contain', 'test')
         cy.get(':nth-child(4) > .flip-card-inner > .flip-card-back > #colony-card-txt').should('contain', 'test')
     })
