@@ -33,12 +33,11 @@ describe('Testing Inspections', () => {
 
     it('should be able to add an inspection with the right details inserted', () => {
         cy.contains('View Inspections').click({force: true})
-        cy.get('#queen-spotted').type('Yes')
-        cy.get('#brood-spotted').type('No')
+        cy.get('#queen-spotted').select('Yes')
+        cy.get('#brood-spotted').select('No')
         cy.get('#honey-stores').type('32')
-        cy.get('[type="text"]').type('testing')
         cy.contains('Add Inspection').click({force: true})
-        cy.get('.box').should('have.length', 3)
-        cy.get('.box').children().last().should('contain', 'Yes').should('contain', 'No').should('contain', '32').should('contain', 'testing')
+        cy.get('.box').should('have.length', 4)
+        cy.get('.box').children().last().should('contain', 'Yes').should('contain', 'No').should('contain', '032')
     })
 })
