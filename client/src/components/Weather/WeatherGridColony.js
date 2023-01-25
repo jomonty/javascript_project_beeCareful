@@ -37,7 +37,7 @@ const WeatherGridColony = ({ weather }) => {
     })
 
     return (
-        <ul className="weather-forecast-wrapper" >
+        <ul className="weather-colony-forecast-wrapper" >
             {weatherColonyNodes}
         </ul>
     )

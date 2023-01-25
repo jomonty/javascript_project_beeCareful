@@ -58,6 +58,7 @@ const NewColonyForm = ({ addColony }) => {
                     name="queenName" 
                     onChange={handleQueenNameChange}
                 />
+                <label>Queen's DOB:</label>
                 <input 
                     type="date" 
                     value={newColony.queenBirthMonth} 
@@ -65,8 +66,9 @@ const NewColonyForm = ({ addColony }) => {
                     name="queenBirthMonth" 
                     onChange={handleQueenBirthMonthChange}
                 />
+                <button type="submit" onClick={handleSubmit} className="btn-add-colony">Add Colony</button>
             </div>
-            <button type="submit" onClick={handleSubmit} className="btn-add-colony">Add Colony</button>
+            
         </form>
     )
 }

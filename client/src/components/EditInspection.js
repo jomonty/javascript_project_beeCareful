@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import './EditInspection.css'
 
 const EditInspection = ({ apiaryData, editInspection }) =>{
 
@@ -87,8 +88,8 @@ const EditInspection = ({ apiaryData, editInspection }) =>{
 
 
     return (
-        <form className="form-wrapper">
-            <div className="input-wrapper">
+        <form className="form-wrapper-insp4">
+            <div className="input-wrapper-insp4">
                 <label htmlFor="ins-date">Inspection Date: </label>
                 <input
                     id="ins-date"
