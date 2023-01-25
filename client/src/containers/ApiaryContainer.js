@@ -12,6 +12,7 @@ import BeeServices from '../services/BeeService';
 import * as helpers from '../services/helpers';
 
 import './ApiaryContainer.css'
+import * as weatherFallback from '../weather_data_fallback.json';
 
 const ApiaryContainer = () => {
 
@@ -21,9 +22,16 @@ const ApiaryContainer = () => {
     
 	useEffect(() => {
 		fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/g64%204bu?unitGroup=uk&key=Q9GKPJ25W25C3H7UHVBDCKSHW&contentType=json")
-			.then(res => res.json())
+			.then(res => {
+                if (res.status === 200) {
+                    return res.json();
+                } else {
+                    return weatherFallback;
+                }
+            })
 			.then(weatherData => {
-                setWeather(weatherData.days.slice(0,5))})
+                setWeather(weatherData.days.slice(0,5))
+            })
     }, []);
 
     useEffect(() => {
