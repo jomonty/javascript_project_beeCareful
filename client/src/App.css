@@ -1,4 +1,5 @@
 body {
     background-image: url('~/public/polygon-scatter-haikei.png');
+    background-attachment: fixed;
     cursor: url('~/public/cursor.cur'), auto;
 }
