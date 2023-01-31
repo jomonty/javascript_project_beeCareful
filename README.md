@@ -9,7 +9,7 @@ This was a group project at [CodeClan](https://www.codeclan.com). Our brief was 
  - To become more confident using Git/GitHub for a multi person project
  - To consolidate learning from the JavaScript module
  
-One of our gruop members is a beekeeper, so we decided to make an app to track apiaries, colonies and log inspections.
+One of our group members is a beekeeper, so we decided to make an app to track apiaries, colonies and log inspections.
 
 Collaborators:
 - [mwmarszalek](https://github.com/mwmarszalek)
